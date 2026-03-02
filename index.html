@@ -311,7 +311,19 @@
       <input type="tel" id="phone" placeholder="رقم التليفون" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
       
       <textarea id="message" rows="6" placeholder="وصف الاستفسار أو الخدمة اللي محتاجها..." required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"></textarea>
-      
+      <form id="whatsappForm" style="max-width:600px; margin:0 auto; display:grid; gap:1.5rem;">
+  <input type="text" id="name" placeholder="الاسم الكامل" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
+  
+  <input type="tel" id="phone" placeholder="رقم التليفون" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
+  
+  <textarea id="message" rows="6" placeholder="وصف الخدمة أو الحملة اللي عايزها..." required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"></textarea>
+
+  <!-- ← ربط صفحة الشكر هنا -->
+ <input type="hidden" name="_next" value="https://mahmoudmetwallybek-web.github.io/al-naghma/thanks.html" />
+  <button type="submit" class="btn">
+    <i class="fab fa-whatsapp"></i> إرسال على الواتساب
+  </button>
+</form>
       <button type="submit" class="btn">
         <i class="fab fa-whatsapp"></i> إرسال على الواتساب
       </button>
@@ -420,6 +432,7 @@
   </script>
 </body>
 </html>
+
 
 
 
