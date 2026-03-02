@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>خدمات الشحن | النجمة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { 
+      font-family: 'Tajawal', sans-serif; 
+      background:#0a0f0d; 
+      color:#e8f5e9; 
+      line-height:1.7; 
+    }
+    .container { max-width:1280px; margin:0 auto; padding:0 15px; }
+
+    header {
+      background:linear-gradient(to bottom, #0B6E4F, #000);
+      padding:1rem 0;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+    nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .logo { font-size:1.8rem; font-weight:bold; color:#D4AF37; }
+    .nav-links { display:flex; gap:1.5rem; }
+    .nav-links a { color:#fff; text-decoration:none; font-weight:500; }
+    .nav-links a:hover { color:#D4AF37; }
+    .hamburger { display:none; font-size:1.8rem; color:#D4AF37; cursor:pointer; }
+
+    /* Hero مع الأنيميشن */
+    .hero {
+      position: relative;
+      min-height:70vh;
+      display:flex;
+      align-items:center;
+      text-align:center;
+      background:linear-gradient(rgba(11,77,46,0.75), rgba(0,0,0,0.8)),
+                 url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920') center/cover;
+      overflow:hidden;
+    }
+
+    .truck-animation {
+      position: absolute;
+      bottom: 8%;
+      left: -200px;
+      font-size: 7rem;
+      color: #D4AF37;
+      animation: drive 14s linear infinite;
+      z-index: 2;
+      text-shadow: 0 0 20px rgba(212,175,55,0.7);
+    }
+    @keyframes drive {
+      0% { transform: translateX(-200px) rotate(0deg); }
+      100% { transform: translateX(calc(100vw + 200px)) rotate(0deg); }
+    }
+
+    .smoke {
+      position: absolute;
+      bottom: 18%;
+      left: 0;
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 50%;
+      animation: smoke-puff 10s infinite;
+      opacity: 0;
+      z-index: 1;
+    }
+    @keyframes smoke-puff {
+      0% { transform: translateX(0) scale(0.5); opacity: 0; }
+      20% { opacity: 0.7; transform: translateX(150px) scale(1.2); }
+      100% { transform: translateX(400px) scale(2.5); opacity: 0; }
+    }
+
+    .speed-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .speed-line {
+      position: absolute;
+      height: 3px;
+      background: linear-gradient(to right, transparent, rgba(212,175,55,0.6), transparent);
+      animation: speed 1.8s linear infinite;
+    }
+    @keyframes speed {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100vw); }
+    }
+
+    .hero-content { position: relative; z-index: 3; padding: 20px; }
+    .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); color: #D4AF37; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(212,175,55,0.7); }
+    .hero p { font-size: clamp(1.1rem, 4vw, 1.6rem); max-width: 800px; margin: 0 auto 2rem; }
+
+    section { padding: 5rem 0; }
+    h2 { text-align: center; font-size: clamp(2.2rem, 6vw, 3.2rem); margin-bottom: 3rem; color: #D4AF37; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .card {
+      background: #111;
+      padding: 2.5rem;
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid #0B6E4F;
+      transition: 0.4s;
+    }
+    .card:hover { transform: translateY(-12px); border-color: #D4AF37; box-shadow: 0 20px 40px rgba(11,77,46,0.4); }
+    .card i { font-size: 4rem; color: #D4AF37; margin-bottom: 1.5rem; }
+
+    .feature-icon {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.9s ease-out;
+    }
+    .feature-icon.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 3rem 0;
+      border-top: 1px solid #0B6E4F;
+    }
+    .social a { color: #D4AF37; font-size: 2rem; margin: 0 1.5rem; transition: 0.3s; }
+    .social a:hover { transform: scale(1.2); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #0B6E4F;
+        width: 100%;
+        padding: 1.5rem 0;
+        text-align: center;
+      }
+      .hero { min-height: 55vh; }
+      .truck-animation { font-size: 4.5rem; bottom: 5%; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">الـ<span>نجمة</span> 🌙</div>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">الرئيسية</a>
+          <a href="apps.html">تطوير التطبيقات</a>
+          <a href="digital-marketing.html">ديجيتال ماركتينج</a>
+          <a href="shipping.html">خدمات الشحن</a>
+          <a href="index.html#campaigns">حملات رمضانية</a>
+          <a href="index.html#why">لماذا نحن</a>
+          <a href="index.html#contact">تواصل</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <!-- أنيميشن الشحن -->
+    <div class="truck-animation"><i class="fas fa-truck"></i></div>
+    <div class="smoke" style="left:10%; animation-delay:0s;"></div>
+    <div class="smoke" style="left:25%; animation-delay:3s;"></div>
+    <div class="speed-lines" id="speedLines"></div>
+
+    <div class="hero-content">
+      <h1>خدمات شحن سريعة وموثوقة</h1>
+      <p>نضمن توصيل طلباتك في الوقت المناسب مع تكامل كامل وتتبع لحظي – داخل مصر وخارجها</p>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2>مميزات خدمات الشحن مع النجمة</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fas fa-truck-fast feature-icon"></i>
+          <h3>توصيل سريع</h3>
+          <p>من 24–48 ساعة داخل القاهرة والجيزة، و2–5 أيام للمحافظات.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-map-marker-alt feature-icon"></i>
+          <h3>تتبع فوري 24/7</h3>
+          <p>العميل يعرف مكان الطرد في أي لحظة من خلال التطبيق أو الرابط.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-box-open feature-icon"></i>
+          <h3>تكامل سهل مع متجرك</h3>
+          <p>API جاهز مع Shopify, WooCommerce, Magento, أو أي منصة تانية.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-shield-alt feature-icon"></i>
+          <h3>تأمين الشحنات</h3>
+          <p>تغطية كاملة ضد الفقدان أو التلف – راحة بالك مضمونة.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-money-bill-wave feature-icon"></i>
+          <h3>دفع عند الاستلام (COD)</h3>
+          <p>نقبل الدفع عند التسليم مع تحويل الأموال لك في نفس اليوم أو خلال 24 ساعة.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-headset feature-icon"></i>
+          <h3>دعم عملاء 24/7</h3>
+          <p>فريق دعم متاح على مدار الساعة لحل أي مشكلة فورًا.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="background:#0B6E4F1a;">
+    <div class="container">
+      <h2>جاهز تكامل خدمة الشحن مع متجرك؟</h2>
+      <p style="text-align:center; margin-bottom:3rem;">اتصل بنا أو اكتب لنا وهنبدأ فورًا</p>
+      <div style="text-align:center;">
+        <a href="index.html#contact" class="btn" style="font-size:1.3rem; padding:1.2rem 3rem;">
+          <i class="fas fa-arrow-left"></i> رجوع لصفحة التواصل
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 النجمة – جميع الحقوق محفوظة</p>
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+      }
+
+      // Fade-in للأيقونات
+      const icons = document.querySelectorAll('.feature-icon');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      icons.forEach(icon => observer.observe(icon));
+
+      // خطوط السرعة العشوائية
+      const speedLines = document.getElementById('speedLines');
+      if (speedLines) {
+        for (let i = 0; i < 20; i++) {
+          const line = document.createElement('div');
+          line.classList.add('speed-line');
+          line.style.top = Math.random() * 100 + '%';
+          line.style.animationDelay = Math.random() * 3 + 's';
+          line.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
+          line.style.width = (Math.random() * 120 + 60) + 'px';
+          speedLines.appendChild(line);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
