@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>النجمة – حملات رمضانية ناجحة 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background:#0a0f0d;
+      color:#e8f5e9;
+      line-height:1.7;
+      transition: all 0.5s ease;
+    }
+
+    /* متغيرات للوضعين */
+    :root {
+      --padding-container: 15px;
+      --hero-min-height: 70vh;
+      --title-size: 2.8rem;
+      --text-size: 1.1rem;
+      --card-padding: 1.6rem;
+      --icon-size: 3rem;
+      --accent: #0B6E4F; /* أخضر غامق */
+      --accent-light: #4CAF50;
+      --gold: #D4AF37;
+    }
+
+    body.desktop-mode {
+      --padding-container: 40px;
+      --hero-min-height: 90vh;
+      --title-size: 4.2rem;
+      --text-size: 1.5rem;
+      --card-padding: 2.8rem;
+      --icon-size: 4.5rem;
+    }
+
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 var(--padding-container); }
+
+    header {
+      background: linear-gradient(to bottom, var(--accent), #000);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; color: var(--gold); }
+    .mode-toggle {
+      background: var(--accent-light);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: 0.3s;
+    }
+    .mode-toggle:hover { background: var(--gold); color: #000; transform: scale(1.05); }
+
+    .hamburger { display: none; font-size: 1.8rem; color: var(--gold); cursor: pointer; }
+    .nav-links { display: flex; gap: 1.8rem; }
+    .nav-links a { color: #d0e8d5; text-decoration: none; font-weight: 500; transition: 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: var(--hero-min-height);
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(rgba(11,77,46,0.75), rgba(0,0,0,0.8)),
+                  url('https://images.unsplash.com/photo-1587555620772-2b4a0e0c8b0f?w=1920') center/cover;
+      overflow: hidden;
+    }
+    .stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff, 0 0 18px var(--gold);
+      animation: twinkle 5s infinite alternate, drift 90s linear infinite;
+    }
+    @keyframes twinkle { 0% { opacity: 0.5; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.4); } }
+    @keyframes drift { 0% { transform: translateX(-40vw); } 100% { transform: translateX(140vw); } }
+
+    .hero-content { position: relative; z-index: 2; padding: 20px; }
+    .hero h1 { font-size: var(--title-size); color: var(--gold); margin-bottom: 1rem; text-shadow: 0 0 20px rgba(212,175,55,0.7); }
+    .hero p { font-size: var(--text-size); margin-bottom: 2rem; max-width: 90%; margin-left: auto; margin-right: auto; }
+
+    .btn {
+      background: var(--gold);
+      color: #000;
+      padding: 1rem 2.8rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      box-shadow: 0 6px 20px rgba(212,175,55,0.3);
+    }
+    .btn:hover {
+      background: #ffea80;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(212,175,55,0.5);
+    }
+
+    section { padding: 5rem 0; }
+    h2 { text-align: center; font-size: clamp(2.2rem, 6vw, 3.2rem); margin-bottom: 3rem; color: var(--gold); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .card {
+      background: #111;
+      padding: var(--card-padding);
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid var(--accent);
+      transition: 0.4s;
+    }
+    .card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 15px 35px rgba(11,77,46,0.4); }
+    .card i { font-size: var(--icon-size); color: var(--gold); margin-bottom: 1rem; }
+
+    .contact { background: rgba(11,77,46,0.1); padding: 5rem 0; }
+    form { max-width: 600px; margin: 0 auto; display: grid; gap: 1.5rem; }
+    input, textarea {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #444;
+      background: #222;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+    input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 3rem 0;
+      border-top: 1px solid var(--accent);
+    }
+    .social a { color: var(--gold); font-size: 1.9rem; margin: 0 1.2rem; transition: 0.3s; }
+    .social a:hover { transform: scale(1.2); }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--accent);
+        width: 100%;
+        padding: 1.5rem 0;
+        text-align: center;
+        border-top: 1px solid var(--gold);
+      }
+      .btn { width: 90%; margin: 0 auto; justify-content: center; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">الـ<span>نجمة</span> 🌙</div>
+        <div style="display:flex; align-items:center; gap:1rem;">
+          <button class="mode-toggle" id="modeToggle">
+            <i class="fas fa-desktop"></i> وضع الشاشة الكبيرة
+          </button>
+          <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">الرئيسية</a>
+          <a href="#services">خدماتنا</a>
+          <a href="#campaigns">حملات رمضانية</a>
+          <a href="#why">لماذا نحن</a>
+          <a href="#contact">تواصل</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="stars" id="stars"></div>
+    <div class="hero-content">
+      <h1>النجمة في رمضان 2026</h1>
+      <p>حملات إعلانية رمضانية تفجر المبيعات • تطبيقات مخصصة • تسويق رقمي قوي • شحن سريع في الموسم الكريم</p>
+      <a href="#contact" class="btn">ابدأ حملتك الرمضانية الآن 🌟</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>خدماتنا في رمضان</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>تطوير تطبيقات</h3>
+          <p>تطبيقات موبايل وويب سريعة تناسب عروض رمضان والتوصيل السريع.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>ديجيتال ماركتينج</h3>
+          <p>حملات إعلانية رمضانية على كل المنصات بأعلى ROI.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-truck-fast"></i>
+          <h3>شحن رمضاني</h3>
+          <p>تكامل شحن سريع + تتبع فوري عشان طلبات العملاء توصل قبل الإفطار.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="campaigns" style="background:#111;">
+    <div class="container">
+      <h2>حملات رمضانية ناجحة من النجمة</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fas fa-moon"></i>
+          <h3>حملة "رمضان مع النجمة"</h3>
+          <p>عروض يومية + مسابقات + إعلانات تفاعلية. زيادة تفاعل 520% وزيادة مبيعات 340%.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>تعاون مع مؤثرين</h3>
+          <p>وصول +450 ألف مشاهدة وزيادة طلبات 380%.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-robot"></i>
+          <h3>إعلانات AI مخصصة</h3>
+          <p>تكلفة أقل 60% وزيادة تحويلات 250%.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-trophy"></i>
+          <h3>تحدي #افطر_مع_النجمة</h3>
+          <p>+1.8 مليون مشاهدة وزيادة متابعين 220%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <h2>لماذا النجمة في رمضان؟</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fas fa-rocket"></i>
+          <h3>سرعة تنفيذ</h3>
+          <p>حملات جاهزة قبل رمضان.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>أمان عالي</h3>
+          <p>حماية بياناتك أولوية.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>فريق محترف</h3>
+          <p>خبرة في حملات المواسم.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>تواصل معانا</h2>
+      <form id="contactForm">
+        <input type="text" placeholder="الاسم" required/>
+        <input type="email" placeholder="الإيميل" required/>
+        <input type="tel" placeholder="رقم الواتساب" required/>
+        <textarea rows="6" placeholder="وصف الخدمة أو الحملة اللي عايزها..." required></textarea>
+        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> إرسال الرسالة</button>
+        <div id="success-msg" style="display:none; text-align:center; color:var(--gold); margin-top:1rem;">
+          تم إرسال الرسالة بنجاح! هنتواصل معاك قريب 🌙
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 النجمة – رمضان كريم وكل عام وأنتم بخير 🌙</p>
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function() {
+      console.log("الصفحة تحملت كاملة");
+
+      // نجوم متحركة
+      const starsContainer = document.getElementById('stars');
+      if (starsContainer) {
+        for (let i = 0; i < 160; i++) {
+          const star = document.createElement('div');
+          star.classList.add('star');
+          const size = Math.random() * 3.5 + 1;
+          star.style.width = star.style.height = size + 'px';
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          const duration = Math.random() * 70 + 40;
+          star.style.animationDuration = duration + 's, ' + (Math.random() * 5 + 3) + 's';
+          star.style.animationDelay = '-' + Math.random() * duration + 's, -' + Math.random() * 8 + 's';
+          starsContainer.appendChild(star);
+        }
+      }
+
+      // Hamburger Menu
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+      }
+
+      // زرار تغيير الوضع (موبايل / شاشة كبيرة)
+      const modeToggle = document.getElementById('modeToggle');
+      const body = document.body;
+      let isDesktop = false;
+
+      if (modeToggle) {
+        modeToggle.addEventListener('click', () => {
+          isDesktop = !isDesktop;
+          body.classList.toggle('desktop-mode', isDesktop);
+
+          if (isDesktop) {
+            modeToggle.innerHTML = '<i class="fas fa-mobile-alt"></i> وضع الموبايل';
+          } else {
+            modeToggle.innerHTML = '<i class="fas fa-desktop"></i> وضع الشاشة الكبيرة';
+          }
+        });
+      }
+
+      // Form success message
+      const form = document.getElementById('contactForm');
+      const msg = document.getElementById('success-msg');
+      if (form && msg) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          msg.style.display = 'block';
+          form.reset();
+          setTimeout(() => msg.style.display = 'none', 5000);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
