@@ -182,6 +182,42 @@
       <p>نضمن توصيل طلباتك في الوقت المناسب مع تكامل كامل وتتبع لحظي – داخل مصر وخارجها</p>
     </div>
   </section>
+<section id="tracking" style="padding: 3rem 0; background: #000; border-bottom: 1px solid #0B6E4F;">
+  <div class="container">
+    <div style="max-width: 600px; margin: 0 auto; background: #111; padding: 2rem; border-radius: 20px; border: 2px solid #D4AF37; box-shadow: 0 0 20px rgba(212,175,55,0.2);">
+      <h3 style="text-align: center; color: #D4AF37; margin-bottom: 1.5rem;"><i class="fas fa-search-location"></i> تتبع شحنتك الآن</h3>
+      <div style="display: flex; gap: 10px;">
+        <input type="text" id="trackInput" placeholder="ادخل رقم هاتفك الذي سجلت به في الفورم" style="flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #0B6E4F; background: #000; color: #fff; outline: none;">
+        <button onclick="trackOrder()" style="background: #D4AF37; color: #000; border: none; padding: 0 20px; border-radius: 8px; font-weight: bold; cursor: pointer;">تتبع</button>
+      </div>
+      <div id="trackResult" style="margin-top: 1.5rem; display: none; text-align: center; padding: 10px; border-radius: 8px; background: rgba(11, 110, 79, 0.2); border: 1px dashed #D4AF37;">
+        </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function trackOrder() {
+    const input = document.getElementById('trackInput').value;
+    const result = document.getElementById('trackResult');
+    
+    if(input.trim() === "") {
+        alert("ًادخل رقم الهاتف");
+        return;
+    }
+
+    result.style.display = "block";
+    result.innerHTML = `<i class="fas fa-spinner fa-spin"></i> جاري البحث في قاعدة البيانات...`;
+
+    setTimeout(() => {
+        result.innerHTML = `
+            <div style="color: #D4AF37; font-weight: bold; margin-bottom: 5px;">شحنة رقم: ${input}</div>
+            <div style="color: #fff;"><i class="fas fa-truck-loading"></i> الحالة: <span style="color: #25d366;">جاري التوصيل الآن</span></div>
+            <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">آخر تحديث: منذ 15 دقيقة في محافظة ${cities[Math.floor(Math.random()*cities.length)]}</div>
+        `;
+    }, 1500);
+}
+</script>
 
   <section id="features">
     <div class="container">
@@ -220,18 +256,144 @@
       </div>
     </div>
   </section>
-
-  <section id="contact" style="background:#0B6E4F1a;">
-    <div class="container">
-      <h2>جاهز تكامل خدمة الشحن مع متجرك؟</h2>
-      <p style="text-align:center; margin-bottom:3rem;">اتصل بنا أو اكتب لنا وهنبدأ فورًا</p>
-      <div style="text-align:center;">
-        <a href="index.html#contact" class="btn" style="font-size:1.3rem; padding:1.2rem 3rem;">
-          <i class="fas fa-arrow-left"></i> رجوع لصفحة التواصل
-        </a>
+<section style="background: #000; padding: 4rem 0;">
+  <div class="container">
+    <div class="grid" style="text-align: center;">
+      <div class="stat-item">
+        <div style="font-size: 3rem; color: #D4AF37; font-weight: bold;">+<span class="counter" data-target="0">0</span></div>
+        <p>شحنة ناجحة شهرياً</p>
+      </div>
+      <div class="stat-item">
+        <div style="font-size: 3rem; color: #D4AF37; font-weight: bold;"><span class="counter" data-target="1">0</span></div>
+        <p>محافظة مغطاة بالكامل</p>
+      </div>
+      <div class="stat-item">
+        <div style="font-size: 3rem; color: #D4AF37; font-weight: bold;"><span class="counter" data-target="0">0</span></div>
+        <p>مندوب استلام وتوصيل</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<script>
+// كود تشغيل العدادات عند الوصول لها
+const counters = document.querySelectorAll('.counter');
+const speed = 200;
+
+const startCounters = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const updateCount = () => {
+        const target = +entry.target.getAttribute('data-target');
+        const count = +entry.target.innerText;
+        const inc = target / speed;
+        if (count < target) {
+          entry.target.innerText = Math.ceil(count + inc);
+          setTimeout(updateCount, 1);
+        } else {
+          entry.target.innerText = target;
+        }
+      };
+      updateCount();
+      observer.unobserve(entry.target);
+    }
+  });
+};
+
+const countObserver = new IntersectionObserver(startCounters, { threshold: 1.0 });
+counters.forEach(counter => countObserver.observe(counter));
+</script>
+<section id="shipping-rates" style="padding: 40px 0; background: #050a08; border-bottom: 1px dashed #0B6E4F;">
+  <div class="container">
+    <h3 style="text-align: center; color: #D4AF37; margin-bottom: 30px;">
+        <i class="fas fa-calculator"></i> احسب تكلفة شحنتك وموعد وصولها
+    </h3>
+    
+    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; background: #111; padding: 25px; border-radius: 15px; border: 1px solid #1a1a1a;">
+      
+      <div style="flex: 1; min-width: 250px;">
+        <label style="display: block; color: #888; margin-bottom: 10px; font-size: 0.9rem;">اختر وجهة الشحن:</label>
+        <select id="provinceSelect" onchange="calculateRate()" style="width: 100%; padding: 12px; border-radius: 8px; background: #000; color: #fff; border: 1px solid #D4AF37; outline: none; cursor: pointer;">
+            <option value="">-- اختر المحافظة --</option>
+            <option value="cairo" data-price="50" data-time="24 ساعة">القاهرة والجيزة</option>
+            <option value="alex" data-price="60" data-time="48 ساعة">الإسكندرية</option>
+            <option value="delta" data-price="65" data-time="2-3 أيام">محافظات الدلتا</option>
+            <option value="canal" data-price="70" data-time="3 أيام">محافظات القناة</option>
+            <option value="upper" data-price="85" data-time="3-5 أيام">صعيد مصر</option>
+            <option value="remote" data-price="120" data-time="5-7 أيام">المناطق النائية (مطروح، سيناء)</option>
+        </select>
+      </div>
+
+      <div id="rateResult" style="flex: 1; min-width: 250px; display: flex; align-items: center; justify-content: center; background: rgba(212, 175, 55, 0.05); border-radius: 10px; border: 1px solid rgba(212,175,55,0.1); padding: 20px; transition: 0.3s;">
+        <p style="color: #666; font-style: italic;">اختر المحافظة لعرض التفاصيل...</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function calculateRate() {
+    const select = document.getElementById('provinceSelect');
+    const resultDiv = document.getElementById('rateResult');
+    const selectedOption = select.options[select.selectedIndex];
+
+    if (!selectedOption.value) {
+        resultDiv.innerHTML = `<p style="color: #666;">اختر المحافظة لعرض التفاصيل...</p>`;
+        return;
+    }
+
+    const price = selectedOption.getAttribute('data-price');
+    const time = selectedOption.getAttribute('data-time');
+
+    resultDiv.innerHTML = `
+        <div style="text-align: center; animation: fadeIn 0.5s;">
+            <div style="font-size: 0.8rem; color: #888; text-transform: uppercase;">تكلفة الشحن تبدأ من</div>
+            <div style="font-size: 2rem; color: #D4AF37; font-weight: bold;">${price} ج.م</div>
+            <div style="background: #0B6E4F; color: #fff; padding: 4px 15px; border-radius: 20px; font-size: 0.85rem; margin-top: 5px;">
+                <i class="fas fa-clock"></i> موعد التوصيل: ${time}
+            </div>
+        </div>
+    `;
+}
+</script>
+
+<style>
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+ <section id="cta-ultimate" style="background: linear-gradient(45deg, #000, #0b4d2e); padding: 6rem 0; position: relative; overflow: hidden; border-top: 2px solid #D4AF37;">
+    <div style="position: absolute; top: -20px; right: -20px; font-size: 15rem; color: rgba(212,175,55,0.03); font-weight: bold; transform: rotate(-15deg); pointer-events: none;">STAR</div>
+
+    <div class="container" style="text-align: center; position: relative; z-index: 2;">
+        <h2 style="color: #fff; text-shadow: 0 0 15px rgba(212,175,55,0.5); margin-bottom: 1.5rem;">مش مجرد "شركة شحن".. إحنا شريك نجاحك! 🚀</h2>
+        <p style="font-size: 1.4rem; color: #D4AF37; max-width: 900px; margin: 0 auto 3rem; font-weight: bold;">
+            انضم لـ +500 براند بيعتمدوا على "النجمة" في تقفيل أوردراتهم من الباب للباب.
+        </p>
+<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
+    
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdpOYVStuFp0Bhmf8dzhE4ItotRKwDAdBPN5RE0OjkyGxbiQ/viewform?usp=publish-editor" target="_blank" class="btn-glow" 
+       style="text-decoration: none; background: #D4AF37; color: #000; padding: 18px 45px; border-radius: 50px; font-size: 1.3rem; font-weight: bold; transition: 0.4s; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 20px rgba(212,175,55,0.3);">
+        <i class="fas fa-file-signature"></i> سجل أوردر شحن جديد
+    </a>
+    
+    <a href="https://wa.me/201040834268" 
+       style="text-decoration: none; background: transparent; color: #fff; padding: 18px 45px; border-radius: 50px; font-size: 1.3rem; font-weight: bold; border: 2px solid #D4AF37; transition: 0.4s; display: flex; align-items: center; gap: 10px;">
+        <i class="fab fa-whatsapp"></i> استفسار سريع
+    </a>
+
+</div>
+
+<style>
+/* تأثير التوهج للزرار الرئيسي */
+.btn-glow:hover {
+    box-shadow: 0 0 40px #D4AF37 !important;
+    transform: scale(1.05);
+    background: #fff !important; /* بيفتح لونه لما تقف عليه */
+}
+</style>
 
   <footer>
     <div class="container">
@@ -282,5 +444,281 @@
       }
     });
   </script>
+<!-- إشعار نيون تقني - يظهر كل مرة -->
+<div id="neonToast" class="neon-toast">
+  <div class="neon-body">
+    <i class="fas fa-bolt"></i>
+    <span>تحديثات جديدة وصلت! خدمات الشحن أسرع وأقوى الآن 🚀</span>
+    <button class="close-neon">×</button>
+  </div>
+</div>
+
+<style>
+  .neon-toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #10B981;
+    padding: 18px 32px;
+    border-radius: 16px;
+    border: 2px solid #10B981;
+    box-shadow: 0 0 30px rgba(16,185,129,0.5), inset 0 0 15px rgba(16,185,129,0.3);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    gap: 16px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    max-width: 420px;
+    transform: translateX(120%);
+    transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .neon-toast.show {
+    transform: translateX(0);
+    animation: neonPulse 2s infinite alternate;
+  }
+
+  @keyframes neonPulse {
+    from { box-shadow: 0 0 30px rgba(16,185,129,0.5); }
+    to   { box-shadow: 0 0 60px rgba(16,185,129,0.9), 0 0 100px rgba(16,185,129,0.4); }
+  }
+
+  .neon-body { display:flex; align-items:center; gap:16px; }
+  .close-neon {
+    background:none;
+    border:none;
+    color:#10B981;
+    font-size:1.8rem;
+    cursor:pointer;
+    margin-left:auto;
+    opacity:0.7;
+  }
+  .close-neon:hover { opacity:1; transform:scale(1.2); }
+</style>
+
+<script>
+// يظهر كل مرة بدون أي شرط
+window.addEventListener('load', function() {
+  const toast = document.getElementById('neonToast');
+  if (toast) {
+    // تأخير 1.5 ثانية عشان الصفحة تتحمل
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 1500);
+
+    // زرار الإغلاق
+    toast.querySelector('.close-neon').addEventListener('click', () => {
+      toast.classList.remove('show');
+    });
+
+    // يختفي لوحده بعد 8 ثواني
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 8000);
+  }
+});
+</script>
+ <a href="https://wa.me/201040834268" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+  <span class="tooltip-text">تحدث معنا الآن</span>
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px; /* بما أن الموقع RTL، اليمين هو الأفضل */
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 10000;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: #128c7e;
+    box-shadow: 0 15px 30px rgba(18, 140, 126, 0.6);
+  }
+
+  /* نص يظهر بجانب الزر ليجذب الانتباه */
+  .tooltip-text {
+    position: absolute;
+    right: 80px;
+    background: #111;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    border: 1px solid #D4AF37;
+  }
+
+  .whatsapp-float:hover .tooltip-text {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* أنيميشن نبض خفيف لجذب العين */
+  .whatsapp-float::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #25d366;
+    animation: pulse-whatsapp 2s infinite;
+  }
+
+  @keyframes pulse-whatsapp {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  /* استجابة للموبايل: تصغير الزر قليلاً */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      width: 55px;
+      height: 55px;
+      font-size: 30px;
+      bottom: 20px;
+      right: 20px;
+    }
+    .tooltip-text { display: none; } /* إخفاء النص في الموبايل لعدم الزحمة */
+  }
+</style>
+<div id="shipping-notify" style="position: fixed; bottom: 20px; left: 20px; background: rgba(15, 15, 15, 0.95); border: 1px solid #D4AF37; padding: 12px 18px; border-radius: 15px; color: #fff; z-index: 99999; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); backdrop-filter: blur(8px); transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform: translateX(-150%); opacity: 0; direction: rtl;">
+  
+  <div style="background: #0B6E4F; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #D4AF37;">
+    <i class="fas fa-shipping-fast" style="color: #D4AF37; font-size: 1.1rem;"></i>
+  </div>
+
+  <div style="text-align: right; min-width: 160px;">
+    <p id="ship-content" style="margin: 0; font-size: 0.9rem; line-height: 1.4; color: #fff;">
+      </p>
+    <small id="ship-time" style="color: #888; font-size: 0.75rem;">منذ قليل</small>
+  </div>
+</div>
+
+<script>
+  // بيانات الشحن (أسماء، مدن، وحالات شحن)
+  const names = ["سارة محمود", "أحمد علي", "مكتب ريتاج", "ياسين إبراهيم", "مريم كمال", "شركة الحمد", "عمر خالد", "ستور الأناقة"];
+  const cities = ["الإسكندرية", "القاهرة", "طنطا", "المنصورة", "أسيوط", "بورسعيد", "السويس"];
+  const actions = [
+    "حجزت شحنة للمحافظات 📦", 
+    "طلبت مندوب لاستلام أوردر 🚛", 
+    "استلمت بوليصة الشحن بنجاح ✅", 
+    "سجلت أوردر شحن سريع ⚡",
+    "فعلت اشتراك التاجر المتميز 💎"
+  ];
+
+  function showShippingNotification() {
+    const toast = document.getElementById('shipping-notify');
+    const content = document.getElementById('ship-content');
+    const timeText = document.getElementById('ship-time');
+
+    // اختيار بيانات عشوائية
+    const randName = names[Math.floor(Math.random() * names.length)];
+    const randCity = cities[Math.floor(Math.random() * cities.length)];
+    const randAction = actions[Math.floor(Math.random() * actions.length)];
+    const randMin = Math.floor(Math.random() * 9) + 1;
+
+    // تحديث الكلام
+    content.innerHTML = `<strong style="color: #D4AF37;">${randName}</strong> من ${randCity} <br> ${randAction}`;
+    timeText.innerText = `منذ ${randMin} دقائق`;
+
+    // أنيميشن الظهور
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(0)';
+
+    // أنيميشن الإخفاء بعد 6 ثواني
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-150%)';
+      toast.style.opacity = '0';
+    }, 6000);
+  }
+
+  // أول إشعار يظهر بعد 4 ثواني من فتح الصفحة
+  setTimeout(showShippingNotification, 4000);
+
+  // تكرار كل 25 ثانية ببيانات جديدة
+  setInterval(showShippingNotification, 25000);
+  async function trackOrder() {
+    const input = document.getElementById('trackInput').value.trim().toUpperCase();
+    const result = document.getElementById('trackResult');
+    
+    
+}
+
+</script>
+<script>
+async function trackOrder() {
+    const input = document.getElementById('trackInput').value.trim();
+    const result = document.getElementById('trackResult');
+    
+    if(input === "") {
+        alert("من فضلك أدخل رقم الموبايل المسجل به أولاً");
+        return;
+    }
+
+    // إظهار اللودر
+    result.style.display = "block";
+    result.innerHTML = `<i class="fas fa-spinner fa-spin" style="color:#D4AF37;"></i> جاري فحص قاعدة البيانات...`;
+
+    try {
+        // استبدل الرابط اللي تحت ده برابط الـ API بتاعك من SheetDB
+        // لاحظ إضافة الجزء الخاص بالبحث عن طريق "رقم هاتف البائع"
+        const apiURL = `https://sheetdb.io/api/v1/hehunazjaeoav/search?رقم هاتف التاجر=${input}`;
+        
+        const response = await fetch(apiURL);
+        const data = await response.json();
+
+        if (data && data.length > 0) {
+            const order = data[0]; // بياخد أول نتيجة يلاقيها للموبايل ده
+            
+            // تأكد إن أسماء الأعمدة (ID) و (Status) مكتوبة كدة بالظبط في الشيت عندك
+            result.innerHTML = `
+                <div style="border-right: 4px solid #25d366; padding-right: 15px; text-align: right;">
+                    <div style="color: #D4AF37; font-weight: bold; font-size: 1.1rem;">✅ تم العثور على طلبك!</div>
+                    <div style="color: #fff; margin: 8px 0;">رقم الشحنة (ID): <span style="color: #D4AF37;">${order.ID}</span></div>
+                    <div style="color: #fff; margin: 8px 0;">الحالة الحالية: <span style="color: #25d366;">${order.Status || 'قيد المراجعة'}</span></div>
+                    <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">📍 يتم التحديث تلقائياً عند تحرك الشحنة</div>
+                </div>
+            `;
+        } else {
+            result.innerHTML = `
+                <div style="color: #ff4d4d;">
+                    <i class="fas fa-times-circle"></i> رقم الموبايل غير مسجل. 
+                    <br><small style="color: #888;">تأكد من كتابة الرقم الصحيح أو تواصل مع الدعم.</small>
+                </div>`;
+        }
+
+    } catch (error) {
+        result.innerHTML = `<div style="color: #ff4d4d;">⚠️ حدث خطأ في الاتصال.. يرجى المحاولة لاحقاً.</div>`;
+        console.error("SheetDB Error:", error);
+    }
+}
+
+// باقي أكواد الأنيميشن الخاصة بك (لا تقم بمسحها)
+document.addEventListener('DOMContentLoaded', () => {
+    // كود الهامبرجر وأنيميشن الأيقونات وخطوط السرعة اللي كان في ملفك الأصلي سيبه هنا
+});
+</script>
 </body>
 </html>

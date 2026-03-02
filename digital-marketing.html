@@ -145,6 +145,17 @@
         text-align:center;
       }
     }
+    @keyframes shake-notify {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(5px); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake-active {
+  animation: shake-notify 0.4s ease-in-out 3; /* بيهتز 3 مرات */
+}
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <!-- Particles.js CDN -->
@@ -182,6 +193,24 @@
   <section id="features">
     <div class="container">
       <h2>خدماتنا في الديجيتال ماركتينج</h2>
+      <section id="stats" style="background: linear-gradient(45deg, #0B6E4F, #000); padding: 4rem 0;">
+  <div class="container">
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 30px;">
+      <div class="stat-item">
+        <h2 style="color: #D4AF37; font-size: 3.5rem; margin-bottom: 0;">0</h2>
+        <p style="color: #fff; font-weight: bold;">ظهور إعلاني (Impressions)</p>
+      </div>
+      <div class="stat-item">
+        <h2 style="color: #D4AF37; font-size: 3.5rem; margin-bottom: 0;">0</h2>
+        <p style="color: #fff; font-weight: bold;">حملة إعلانية ناجحة</p>
+      </div>
+      <div class="stat-item">
+        <h2 style="color: #D4AF37; font-size: 3.5rem; margin-bottom: 0;">0</h2>
+        <p style="color: #fff; font-weight: bold;">متوسط زيادة المبيعات</p>
+      </div>
+    </div>
+  </div>
+</section>
       <div class="grid">
         <div class="card">
           <i class="fas fa-bullhorn feature-icon"></i>
@@ -216,19 +245,150 @@
       </div>
     </div>
   </section>
+  <section id="partners" style="background: #000; padding: 40px 0; overflow: hidden; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a;">
+  <div class="container">
+    <p style="text-align: center; color: #D4AF37; margin-bottom: 25px; font-weight: bold; font-size: 1.1rem; letter-spacing: 2px;">نعتز بثقتهم في "النجمة" ⭐قائمة تعاقدات التسويق</p>
+    
+    <div class="logos-slider" style="display: flex; gap: 50px; width: calc(250px * 14); animation: scroll 30s linear infinite;">
+     <div style="text-align: center; margin-top: 30px;">
+        <p style="color: #666; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.05); padding: 8px 20px; border-radius: 50px; border: 1px dashed rgba(212, 175, 55, 0.2);">
+            <span style="display: inline-block; width: 8px; height: 8px; background: #D4AF37; border-radius: 50%; box-shadow: 0 0 10px #D4AF37; animation: pulse 1.5s infinite;"></span>
+            يتم تحديث قائمة شركاء المؤسسة بصفة دورية وفقاً للتعاقدات الجديدة
+        </p>
+    </div>
+  </div>
+</section>
 
-  <section id="contact" style="background:#0B6E4F1a;">
-    <div class="container">
-      <h2>جاهز تبدأ حملتك الإعلانية؟</h2>
-      <p style="text-align:center; margin-bottom:3rem;">اتصل بنا أو اكتب لنا وهنبدأ فورًا</p>
-      <div style="text-align:center;">
-        <a href="index.html#contact" class="btn" style="font-size:1.3rem; padding:1.2rem 3rem;">
-          <i class="fas fa-arrow-left"></i> رجوع لصفحة التواصل
-        </a>
+<style>
+  /* أنيميشن النبضة للجملة */
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+  }
+
+  /* أنيميشن الجري للشريط (عشان تتأكد إنه شغال) */
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 7)); }
+  }
+</style>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* أنيميشن الجري */
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 7)); }
+  }
+
+  /* تأثير الهوفر على اللوجو */
+  .logo-item {
+    transition: 0.4s;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+  }
+
+  .logo-item:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+    color: #D4AF37 !important;
+  }
+  .logo-item img {
+    max-height: 60px; /* بيوحد ارتفاع كل اللوجوهات عشان الشريط يكون متناسق */
+    object-fit: contain;
+    filter: grayscale(100%); /* بيخلي اللوجوهات كلها رمادي في البداية */
+}
+
+.logo-item:hover img {
+    filter: grayscale(0%); /* لما الماوس ييجي عليه يظهر بلونه الحقيقي */
+    transform: scale(1.1);
+}
+</style>
+  <section id="packages" style="padding: 4rem 0;">
+  <div class="container">
+    <h2 style="text-align: center; color: #D4AF37; margin-bottom: 2.5rem; font-size: 2.5rem;">باقاتنا التسويقية</h2>
+    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start;">
+      
+      <div class="card" style="border: 1px solid #0B6E4F; padding: 1.5rem;">
+        <h3 style="color: #D4AF37; font-size: 1.5rem;">الباقة الفضية</h3>
+        <div style="font-size: 1.8rem; margin: 0.8rem 0;">2500 <small style="font-size: 0.9rem;">ج.م/شهرياً</small></div>
+        <ul style="list-style: none; text-align: right; margin-bottom: 1.5rem; color: #d0e8d5; font-size: 0.95rem;">
+          <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:#D4AF37; margin-left: 8px;"></i> إدارة منصتين (فيسبوك/إنستا)</li>
+          <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:#D4AF37; margin-left: 8px;"></i> 12 بوست + 8 ستوري</li>
+          <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:#D4AF37; margin-left: 8px;"></i> إدارة حملة إعلانية واحدة</li>
+          <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:#D4AF37; margin-left: 8px;"></i> تقرير شهري بالأداء</li>
+        </ul>
+        <a href="javascript:void(0)" onclick="orderPackage('الباقة الفضية')" class="btn" style="display:block; background:#0B6E4F; color:#fff; padding:12px; border-radius:8px; text-decoration:none; text-align:center; font-weight:bold;">اشترك الآن</a>
+      </div>
+
+      <div class="card" style="border: 2px solid #D4AF37; padding: 1.5rem; position: relative; background: #111;">
+        <span style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: #D4AF37; color: #000; padding: 4px 12px; border-radius: 0 0 10px 10px; font-weight: bold; font-size: 0.75rem;">الأكثر طلباً</span>
+        <h3 style="color: #D4AF37; font-size: 1.5rem;">الباقة الذهبية</h3>
+        <div style="font-size: 1.8rem; margin: 0.8rem 0;">5000 <small style="font-size: 0.9rem;">ج.م/شهرياً</small></div>
+        <ul style="list-style: none; text-align: right; margin-bottom: 1.5rem; color: #d0e8d5; font-size: 0.95rem;">
+          <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:#D4AF37; margin-left: 8px;"></i> إدارة 4 منصات تواصل</li>
+          <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:#D4AF37; margin-left: 8px;"></i> 20 بوست + ريلز + ستوريز</li>
+          <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:#D4AF37; margin-left: 8px;"></i> إدارة حملات (Meta + TikTok)</li>
+          <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:#D4AF37; margin-left: 8px;"></i> تصوير ومونتاج فيديوهات</li>
+        </ul>
+        <a href="javascript:void(0)" onclick="orderPackage('الباقة الذهبية')" class="btn" style="display:block; background:#D4AF37; color:#000; padding:12px; border-radius:8px; text-decoration:none; font-weight:bold; text-align:center;">اشترك الآن</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="marketing-order" style="background: #0a0f0d; padding: 5rem 0; width: 100%; display: flex; justify-content: center;">
+  <div class="container" style="width: 100%; max-width: 800px; padding: 0 20px;">
+    
+    <div style="background: #111; border-radius: 25px; border: 1px solid rgba(212, 175, 55, 0.3); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8);">
+      
+      <div style="background: linear-gradient(45deg, #0B6E4F, #053022); padding: 2.5rem; text-align: center; border-bottom: 2px solid #D4AF37;">
+        <i class="fab fa-whatsapp" style="font-size: 3rem; color: #D4AF37; margin-bottom: 10px;"></i>
+        <h2 style="color: #fff; margin: 0; font-size: 2rem;">احجز مكانك في الصدارة 🚀</h2>
+        <p style="color: #d0e8d5; margin-top: 10px;">املأ البيانات وهنحولك لمحادثة مباشرة مع خبير تسويقي</p>
+      </div>
+
+      <div style="padding: 2.5rem;">
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+          <div style="text-align: right;">
+            <label style="display: block; color: #D4AF37; margin-bottom: 8px;">الاسم بالكامل</label>
+            <input type="text" id="wa_name" placeholder="أدخل اسمك هنا..." style="width: 100%; padding: 1rem; background: #000; border: 1px solid #0B6E4F; border-radius: 10px; color: #fff; font-family: 'Tajawal'; outline: none;">
+          </div>
+          <div style="text-align: right;">
+            <label style="display: block; color: #D4AF37; margin-bottom: 8px;">رقم الموبايل</label>
+            <input type="tel" id="wa_phone" placeholder="01XXXXXXXXX" style="width: 100%; padding: 1rem; background: #000; border: 1px solid #0B6E4F; border-radius: 10px; color: #fff; font-family: 'Tajawal'; outline: none;">
+          </div>
+        </div>
+
+        <div style="text-align: right; margin-bottom: 2rem;">
+          <label style="display: block; color: #D4AF37; margin-bottom: 8px;">اختار الباقة اللي تهمك</label>
+          <select id="wa_package" style="width: 100%; padding: 1rem; background: #000; border: 1px solid #0B6E4F; border-radius: 10px; color: #fff; font-family: 'Tajawal'; outline: none;">
+            <option value="الفضية">🥇 الباقة الفضية (الأكثر طلباً)</option>
+            <option value="الذهبية">💎 الباقة الذهبية (احترافية)</option>
+            <option value="المخصصة">✨ استشارة تسويقية مخصصة</option>
+          </select>
+        </div>
+
+        <button type="button" onclick="sendToWhatsApp()" style="width: 100%; padding: 1.2rem; background: #25d366; color: #fff; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;">
+          <span>بدء الدردشة مع مستشارك التسويقي</span>
+          <i class="fab fa-whatsapp"></i>
+        </button>
+        
+        <p style="text-align: center; margin-top: 1.5rem; color: #666; font-size: 0.85rem;">✨ خصوصيتك تهمنا، بياناتك مش بتوصل لغير فريق النجمة.</p>
       </div>
     </div>
-  </section>
 
+  </div>
+</section>
   <footer>
     <div class="container">
       <p>© 2026 النجمة – جميع الحقوق محفوظة</p>
@@ -282,5 +442,307 @@
       icons.forEach(icon => observer.observe(icon));
     });
   </script>
+<div id="glassToast" class="glass-toast">
+  <i class="fas fa-star"></i>
+  <span>تحديثات جديدة في الديجيتال ماركتينج – حملات أذكى وأسرع</span>
+  <button class="close-glass">×</button>
+</div>
+
+<style>
+  .glass-toast {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    background: rgba(27, 37, 59, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 20px;
+    padding: 18px 32px;
+    color: #D4AF37;
+    display: none;
+    align-items: center;
+    gap: 16px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    max-width: 420px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transform: translateX(120%);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .glass-toast.show {
+    transform: translateX(0);
+  }
+
+  .close-glass {
+    background: none;
+    border: none;
+    color: #D4AF37;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: auto;
+  }
+</style>
+
+<script>
+  window.addEventListener('load', () => {
+    const toast = document.getElementById('glassToast');
+    if (toast) {
+      setTimeout(() => toast.classList.add('show'), 1200);
+
+      toast.querySelector('.close-glass').addEventListener('click', () => {
+        toast.classList.remove('show');
+      });
+
+      setTimeout(() => toast.classList.remove('show'), 7500);
+    }
+  });
+    function sendToWhatsApp() {
+    // 1. جمع البيانات من الخانات
+    const name = document.getElementById('wa_name').value;
+    const phone = document.getElementById('wa_phone').value;
+    const package = document.getElementById('wa_package').value;
+
+    // 2. التأكد أن البيانات مش فاضية
+    if (name === "" || phone === "") {
+        alert("يا بطل، كمل بياناتك الأول (الاسم والموبايل) عشان نقدر نخدمك!");
+        return;
+    }
+
+    // 3. رقمك أنت (رقم صاحب الشركة) - تأكد إنه يبدأ بكود الدولة بدون أصفار
+    const myNumber = "201040834268"; 
+
+    // 4. تجهيز نص الرسالة (مظبوطة ومنسقة)
+    const message = `السلام عليكم يا نجمة 🌙%0A` +
+                    `حابب أستفسر عن خدمات التسويق:%0A%0A` +
+                    `*الاسم:* ${name}%0A` +
+                    `*الموبايل:* ${phone}%0A` +
+                    `*الباقة المهتم بها:* ${package}%0A%0A` +
+                    `مستني ردكم بالتفاصيل!`;
+
+    // 5. فتح رابط الواتساب
+    const url = `https://wa.me/${myNumber}?text=${message}`;
+    window.open(url, '_blank').focus();
+}
+</script>
+ <a href="https://wa.me/201040834268" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+  <span class="tooltip-text">تحدث معنا الآن</span>
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px; /* بما أن الموقع RTL، اليمين هو الأفضل */
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 10000;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: #128c7e;
+    box-shadow: 0 15px 30px rgba(18, 140, 126, 0.6);
+  }
+
+  /* نص يظهر بجانب الزر ليجذب الانتباه */
+  .tooltip-text {
+    position: absolute;
+    right: 80px;
+    background: #111;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    border: 1px solid #D4AF37;
+  }
+
+  .whatsapp-float:hover .tooltip-text {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* أنيميشن نبض خفيف لجذب العين */
+  .whatsapp-float::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #25d366;
+    animation: pulse-whatsapp 2s infinite;
+  }
+
+  @keyframes pulse-whatsapp {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  /* استجابة للموبايل: تصغير الزر قليلاً */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      width: 55px;
+      height: 55px;
+      font-size: 30px;
+      bottom: 20px;
+      right: 20px;
+    }
+    .tooltip-text { display: none; } /* إخفاء النص في الموبايل لعدم الزحمة */
+  }
+</style>
+<div id="trust-notify" style="position: fixed; bottom: 30px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #D4AF37; padding: 15px 20px; border-radius: 20px; color: #fff; z-index: 99999; display: flex; align-items: center; gap: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.7); backdrop-filter: blur(10px); transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform: translateX(-150%); opacity: 0;">
+  
+  <div style="background: #0B6E4F; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #D4AF37;">
+    <i class="fas fa-shopping-bag" style="color: #D4AF37; font-size: 1.2rem;"></i>
+  </div>
+
+  <div style="text-align: right; min-width: 180px;">
+    <p id="notify-content" style="margin: 0; font-size: 0.95rem; line-height: 1.4; color: #eee;">
+      </p>
+    <small id="notify-time" style="color: #888; font-size: 0.8rem;">منذ قليل</small>
+  </div>
+
+  <button onclick="document.getElementById('trust-notify').style.display='none'" style="background:none; border:none; color:#D4AF37; cursor:pointer; font-size: 1.2rem;">×</button>
+</div>
+
+<script>
+  // مصفوفات البيانات العشوائية لتوليد إشعارات واقعية
+  const userNames = ["أحمد م.", "سارة محمود", "شركة المروة", "ياسين علي", "مريم إبراهيم", "كابتن هاني", "عمر خالد", "ستور الأناقة"];
+  const userCities = ["القاهرة", "الإسكندرية", "طنطا", "المنصورة", "أسيوط", "بورسعيد", "الزقازيق"];
+  const userServices = [
+    "طلب الباقة الذهبية 🥇", 
+    "شحن أوردر للإسكندرية 🚛", 
+    "حجز استشارة تسويقية 💎", 
+    "طلب الباقة الفضية 🥈",
+    "توصيل شحنة سريعة ⚡",
+    "تفعيل حملة تيك توك 🚀"
+  ];
+
+  function triggerNotification() {
+    const toast = document.getElementById('trust-notify');
+    const content = document.getElementById('notify-content');
+    const timeText = document.getElementById('notify-time');
+
+    // اختيار بيانات عشوائية تماماً في كل مرة
+    const name = userNames[Math.floor(Math.random() * userNames.length)];
+    const city = userCities[Math.floor(Math.random() * userCities.length)];
+    const service = userServices[Math.floor(Math.random() * userServices.length)];
+    const randomMinutes = Math.floor(Math.random() * 10) + 1;
+
+    // تحديث محتوى الإشعار
+    content.innerHTML = `<strong style="color: #D4AF37;">${name}</strong> من ${city} <br> ${service}`;
+    timeText.innerText = `منذ ${randomMinutes} دقائق`;
+
+    // أنيميشن الظهور (الدخول من اليسار)
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(0)';
+
+    // أنيميشن الإخفاء (الخروج لليسار بعد 6 ثواني)
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-150%)';
+      toast.style.opacity = '0';
+    }, 6000);
+  }
+
+  // أول ظهور للإشعار بعد 4 ثواني من تحميل الصفحة
+  setTimeout(triggerNotification, 4000);
+
+  // تكرار الإشعار ببيانات جديدة كل 20 ثانية
+  setInterval(triggerNotification, 20000);
+  function orderPackage(packageName) {
+    const myNumber = "201040834268"; 
+    const message = `أهلاً "النجمة" 🌙%0A%0A` +
+                    `أنا مهتم بالاشتراك في *${packageName}*%0A` +
+                    `محتاج أعرف الخطوات الجاية إيه؟`;
+
+    const url = `https://wa.me/${myNumber}?text=${message}`;
+    
+    // الحل السحري: إنشاء عنصر "A" وهمي وبرمجته للفتح في صفحة جديدة
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank'; // يفتح في تاب جديد
+    link.rel = 'noopener noreferrer'; // حماية إضافية تمنع المتصفح من قفل الصفحة الأصلية
+    
+    // إضافة العنصر لثانية واحدة وضغطه برمجياً ثم حذفه
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+}
+// كود إشعار "تم التحديث بنجاح" مع الاهتزاز
+const sectionToWatch = document.querySelector('#partners');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            createShakeNotification();
+            observer.unobserve(entry.target); // يظهر مرة واحدة بس
+        }
+    });
+}, { threshold: 0.5 });
+
+observer.observe(sectionToWatch);
+
+function createShakeNotification() {
+    const notify = document.createElement('div');
+    
+    // تصميم الإشعار (أخضر مع ذهبي)
+    notify.style = `
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0B6E4F;
+        color: #fff;
+        padding: 10px 25px;
+        border-radius: 50px;
+        border: 2px solid #D4AF37;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        z-index: 100000;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        direction: rtl;
+    `;
+
+    notify.innerHTML = `
+        <i class="fas fa-check-circle" style="color: #D4AF37;"></i>
+        <span>اغتنم فرصتك الآن! في حجز باقتنا بلعروض</span>
+    `;
+
+    document.body.appendChild(notify);
+    
+    // إضافة كلاس الاهتزاز بعد ثانية من الظهور
+    setTimeout(() => {
+        notify.classList.add('shake-active');
+    }, 500);
+
+    // إخفاء الإشعار بعد 4 ثواني
+    setTimeout(() => {
+        notify.style.opacity = '0';
+        notify.style.transition = '0.5s';
+        setTimeout(() => notify.remove(), 500);
+    }, 4000);
+}
+</script>
+
 </body>
 </html>

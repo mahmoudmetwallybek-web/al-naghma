@@ -225,7 +225,266 @@
       </div>
     </div>
   </section>
+  <section id="portfolio" style="background: radial-gradient(circle at center, #0d1b2a 0%, #050a12 100%);">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+  <span class="updating-badge">
+    <i class="fas fa-sync-alt fa-spin"></i> 
+    جاري رفع مشاريعنا الجديدة لعام 2026.. انتظرونا!
+  </span>
+</div>
 
+<style>
+  .updating-badge {
+    background: rgba(212, 175, 55, 0.1);
+    color: #D4AF37;
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 1px dashed #D4AF37;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.7; transform: scale(1); }
+  }
+</style>
+    <h2 style="margin-bottom: 0.5rem;">مشاريع نفخر بها 🚀</h2>
+    <p style="text-align:center; color:#d0e8d5; margin-bottom: 4rem; font-size: 1.1rem;">نحول الأفكار المعقدة إلى تجارب رقمية بسيطة وسلسة</p>
+    
+    <div class="grid">
+      <div class="portfolio-card">
+        <div class="card-image">
+           <i class="fas fa-shopping-bag"></i>
+           <div class="overlay"><span>عرض التفاصيل</span></div>
+        </div>
+        <div class="card-info">
+          <span class="category"></span>
+          <h3> </h3>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="card-image">
+           <i class="fas fa-map-marked-alt"></i>
+           <div class="overlay"><span>عرض التفاصيل</span></div>
+        </div>
+        <div class="card-info">
+          <span class="category">خدمات لوجستية</span>
+          <h3>تطبيق "سريع"</h3>
+          <p>ربط المناديب بالعملاء عبر الخرائط الحية بدقة متناهية.</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="card-image">
+           <i class="fas fa-graduation-cap"></i>
+           <div class="overlay"><span>عرض التفاصيل</span></div>
+        </div>
+        <div class="card-info">
+          <span class="category">تحكم عن بعد</span>
+          <h3>منصة "تحكم"</h3>
+          <p>تحكم كامل في الأجهزة الذكية من خلال واجهة سهلة الاستخدام.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* تنسيقات خاصة بمعرض الأعمال */
+  .portfolio-card {
+    background: #111;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-15px);
+    border-color: #D4AF37;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+  }
+
+  .card-image {
+    height: 220px;
+    background: linear-gradient(45deg, #0B6E4F, #050a12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image i {
+    font-size: 5rem;
+    color: rgba(214, 175, 55, 0.3);
+    transition: 0.5s;
+  }
+
+  .portfolio-card:hover .card-image i {
+    transform: scale(1.2) rotate(-10deg);
+    color: #D4AF37;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 110, 79, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .portfolio-card:hover .overlay { opacity: 1; }
+  .overlay span { 
+    border: 2px solid #D4AF37; 
+    padding: 8px 20px; 
+    color: #fff; 
+    border-radius: 30px;
+    font-weight: bold;
+  }
+
+  .card-info { padding: 1.5rem; text-align: right; }
+  .category { 
+    color: #D4AF37; 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  .card-info h3 { margin: 0.5rem 0; color: #fff; font-size: 1.4rem; }
+  .card-info p { color: #a0a0a0; font-size: 0.95rem; line-height: 1.6; }
+</style>
+<section id="contact-form-section" style="background:#0B6E4F1a; padding: 6rem 0;">
+  <div class="container" style="max-width: 700px;">
+    
+    <h2 style="margin-bottom: 1rem;">ابدأ مشروعك اليوم</h2>
+    <p style="text-align:center; color:#d0e8d5; margin-bottom: 3rem;">سجل بياناتك وسيقوم خبير تقني بالتواصل معك لمناقشة التفاصيل.</p>
+    
+    <form 
+    action="https://formspree.io/f/xnjbyyzj" method="POST" id="mainContactForm" style="display: flex; flex-direction: column; gap: 1.2rem;">
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <input type="text" name="name" placeholder="الاسم الكامل" required style="padding: 1.2rem; border-radius: 12px; border: 1px solid #0B6E4F; background: #050a12; color: #fff; outline: none; transition: 0.3s;">
+        <input type="tel" name="phone" placeholder="رقم الواتساب" required style="padding: 1.2rem; border-radius: 12px; border: 1px solid #0B6E4F; background: #050a12; color: #fff; outline: none;">
+      </div>
+
+      <input type="email" name="email" placeholder="البريد الإلكتروني" required style="padding: 1.2rem; border-radius: 12px; border: 1px solid #0B6E4F; background: #050a12; color: #fff; outline: none;">
+      
+      <select name="service" style="padding: 1.2rem; border-radius: 12px; border: 1px solid #0B6E4F; background: #050a12; color: #fff; outline: none; cursor: pointer;">
+        <option value="ios-android">تطبيق موبايل (iOS / Android)</option>
+        <option value="web-app">تطبيق ويب (PWA)</option>
+        <option value="e-commerce">متجر إلكتروني متكامل</option>
+        <option value="ui-ux">تصميم واجهات UI/UX</option>
+      </select>
+
+      <textarea name="message" placeholder="حدثنا عن فكرة تطبيقك..." rows="5" required style="padding: 1.2rem; border-radius: 12px; border: 1px solid #0B6E4F; background: #050a12; color: #fff; outline: none; resize: none;"></textarea>
+      
+      <button type="submit" class="btn" style="background:#D4AF37; color:#000; padding:1.3rem; border:none; border-radius: 12px; cursor:pointer; font-weight:bold; font-size:1.3rem; transition: 0.4s;">
+       إرسال الطلب 
+      </button>
+
+      <div id="form-status" style="text-align: center; margin-top: 1rem; display: none;"></div>
+    </form>
+  </div>
+  <section id="reviews-faq" style="background: #050a12; padding: 6rem 0;">
+  <div class="container" style="max-width: 900px;">
+    <h2 style="margin-bottom: 1rem;">ماذا يقول عملاؤنا عن النجمة؟ ⭐</h2>
+    <p style="text-align:center; color:#d0e8d5; margin-bottom: 3rem;">إجابات لأسئلتكم من واقع تجارب عملائنا الحقيقية</p>
+
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>هل تلتزم النجمة بمواعيد التسليم؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>"بصراحة، استلمت تطبيقي قبل الموعد بـ 3 أيام! الاحترافية في المواعيد هي أكثر ما ميز تجربتي معهم."</p>
+          <span class="client-name">- أ. محمد (صاحب متجر إلكتروني)</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>كيف هي جودة الدعم الفني بعد استلام التطبيق؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>"الدعم الفني متواجد 24/7 فعلياً. واجهت مشكلة بسيطة في الربط مع البنك وتم حلها في أقل من ساعة."</p>
+          <span class="client-name">- د. سارة (منصة تعليمية)</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>هل التصميمات عصرية وتناسب المستخدم العربي؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>"واجهة المستخدم (UI) كانت مبهرة جداً. العملاء عندي أشادوا بسهولة استخدام التطبيق وجمال ألوانه."</p>
+          <span class="client-name">- م. أحمد (تطبيق سريع للخدمات)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-container { display: flex; flex-direction: column; gap: 15px; }
+  
+  .faq-item {
+    background: #111;
+    border: 1px solid rgba(11, 110, 79, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    text-align: right;
+  }
+
+  .faq-question i { color: #D4AF37; transition: 0.4s; }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background: rgba(11, 110, 79, 0.05);
+    padding: 0 20px;
+  }
+
+  .faq-answer p { color: #d0e8d5; font-style: italic; margin-top: 10px; }
+  .client-name { display: block; color: #D4AF37; margin: 10px 0 20px; font-weight: bold; font-size: 0.9rem; }
+
+  /* الحالة النشطة عند الفتح */
+  .faq-item.active { border-color: #D4AF37; }
+  .faq-item.active .faq-answer { max-height: 200px; padding: 10px 20px 20px; }
+  .faq-item.active .faq-question i { transform: rotate(180deg); }
+</style>
+</section>
   <section id="contact" style="background:#0B6E4F1a;">
     <div class="container">
       <h2>جاهز تبدأ مشروع تطبيقك؟</h2>
@@ -271,7 +530,11 @@
       }, { threshold: 0.15 });
 
       icons.forEach(icon => observer.observe(icon));
-
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+  card.addEventListener('click', () => {
+    alert("🚀يتم اضافة بيانات هذا التطبيق");
+  }); // قفلة الـ addEventListener
+}); // قفلة الـ forEach
       // أنيميشن الكودز المتحركة في الخلفية (أزرق خفيف)
       const codeRain = document.getElementById('codeRain');
       if (codeRain) {
@@ -294,5 +557,278 @@
       }
     });
   </script>
+  <!-- الإشعار نفسه -->
+<div id="updateToast" class="toast-update">
+  <div class="toast-body">
+    <i class="fas fa-bell"></i>
+    <span>تم إضافة تحديثات جديدة في خدمات التطبيقات 🔥</span>
+    <button class="close-toast">×</button>
+  </div>
+</div>
+
+<style>
+  .toast-update {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: #0B6E4F;
+    color: white;
+    padding: 16px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.6);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    border: 2px solid #D4AF37;
+    min-width: 340px;
+    max-width: 90%;
+    text-align: center;
+    border-radius: 16px;
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .toast-update.show {
+    display: flex;
+    transform: translateX(-50%) translateY(0);
+    animation: shakeIn 0.8s ease-out;
+  }
+
+  @keyframes shakeIn {
+    0%   { transform: translateX(-50%) translateY(0) rotate(0deg); opacity:0; }
+    20%  { transform: translateX(-50%) translateY(-10px) rotate(2deg); }
+    40%  { transform: translateX(-50%) translateY(5px) rotate(-2deg); }
+    60%  { transform: translateX(-50%) translateY(-5px) rotate(1deg); }
+    80%  { transform: translateX(-50%) translateY(2px) rotate(-1deg); }
+    100% { transform: translateX(-50%) translateY(0) rotate(0deg); opacity:1; }
+  }
+
+  .close-toast {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: auto;
+    opacity: 0.8;
+  }
+  .close-toast:hover { opacity: 1; transform: scale(1.2); }
+</style>
+
+<script>
+// الكود ده هيخلي الإشعار يظهر كل مرة يدخل فيها حد (بدون localStorage)
+window.addEventListener('load', function() {
+  const toast = document.getElementById('updateToast');
+  
+  if (toast) {
+    // انتظر ثانيتين عشان الصفحة تتحمل كويس
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 2000);
+
+    // زرار الإغلاق
+    toast.querySelector('.close-toast').addEventListener('click', () => {
+      toast.classList.remove('show');
+    });
+
+    // يختفي لوحده بعد 8 ثواني
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 8000);
+  }
+});
+// ابحث عن نهاية السكريبت القديم في ملفك وضع هذا الكود قبله:
+
+      // كود معالجة نموذج التواصل الجديد
+      const form = document.getElementById("mainContactForm");
+      const status = document.getElementById("form-status");
+
+      if (form) {
+        form.addEventListener("submit", async function(event) {
+          event.preventDefault();
+          const data = new FormData(event.target);
+          
+          status.style.display = "block";
+          status.innerHTML = "جاري الإرسال... ⏳";
+          status.style.color = "#D4AF37";
+
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "✅ تم استلام طلبك بنجاح! سيتواصل معك فريق النجمة قريباً.";
+              status.style.color = "#D4AF37"; // أو الأخضر حسب رغبتك
+              form.reset();
+            } else {
+              status.innerHTML = "❌ عذراً، حدث خطأ ما. حاول مرة أخرى.";
+              status.style.color = "red";
+            }
+          }).catch(error => {
+            status.innerHTML = "❌ خطأ في الاتصال بالخادم.";
+            status.style.color = "red";
+          });
+        });
+      }
+      document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const faqItem = button.parentElement;
+    
+    // إغلاق أي سؤال آخر مفتوح (اختياري)
+    document.querySelectorAll('.faq-item').forEach(item => {
+      if (item !== faqItem) item.classList.remove('active');
+    });
+
+    // فتح أو إغلاق السؤال الحالي
+    faqItem.classList.toggle('active');
+  });
+}); 
+  </script>
+  <a href="https://wa.me/201040834268" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+  <span class="tooltip-text">تحدث معنا الآن</span>
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px; /* بما أن الموقع RTL، اليمين هو الأفضل */
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 10000;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: #128c7e;
+    box-shadow: 0 15px 30px rgba(18, 140, 126, 0.6);
+  }
+
+  /* نص يظهر بجانب الزر ليجذب الانتباه */
+  .tooltip-text {
+    position: absolute;
+    right: 80px;
+    background: #111;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    border: 1px solid #D4AF37;
+  }
+
+  .whatsapp-float:hover .tooltip-text {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* أنيميشن نبض خفيف لجذب العين */
+  .whatsapp-float::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #25d366;
+    animation: pulse-whatsapp 2s infinite;
+  }
+
+  @keyframes pulse-whatsapp {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  /* استجابة للموبايل: تصغير الزر قليلاً */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      width: 55px;
+      height: 55px;
+      font-size: 30px;
+      bottom: 20px;
+      right: 20px;
+    }
+    .tooltip-text { display: none; } /* إخفاء النص في الموبايل لعدم الزحمة */
+  }
+</style>
+</script>
+<div id="agency-notify" style="position: fixed; bottom: 25px; left: 25px; background: rgba(10, 10, 10, 0.98); border: 1.5px solid #D4AF37; padding: 15px 20px; border-radius: 12px; color: #fff; z-index: 10000; display: flex; align-items: center; gap: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); backdrop-filter: blur(10px); transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55); transform: translateX(-180%); opacity: 0; direction: rtl; min-width: 280px;">
+  
+  <div style="background: linear-gradient(135deg, #0B6E4F, #1a1a1a); width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(212, 175, 55, 0.3);">
+    <i id="notify-icon" class="fas fa-rocket" style="color: #D4AF37; font-size: 1.2rem;"></i>
+  </div>
+
+  <div style="text-align: right;">
+    <p id="agency-content" style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: #eee;">
+      </p>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
+        <small id="agency-time" style="color: #666; font-size: 0.7rem;">منذ 2 دقيقة</small>
+        <span style="font-size: 0.65rem; color: #0B6E4F; font-weight: bold; letter-spacing: 1px;">LIVE UPDATE</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // بيانات مخصصة للماركتينج والتطبيقات
+  const agencyData = [
+    { name: "شركة النور", city: "دبي", action: "تعاقدت على باقة إدارة السوشيال ميديا 📱", icon: "fa-bullhorn" },
+    { name: "عيادات د. هاني", city: "القاهرة", action: "أطلقت حملة إعلانية ممولة الآن 🚀", icon: "fa-ad" },
+    { name: "مطعم ذا جリル", city: "الرياض", action: "استلم نسخة تجريبية من تطبيق الموبايل 📲", icon: "fa-mobile-alt" },
+    { name: "مكتبة الإيمان", city: "الإسكندرية", action: "حجزت خدمة تصميم الهوية البصرية 🎨", icon: "fa-paint-brush" },
+    { name: "ستور توب شوب", city: "جدة", action: "سجل لإنشاء متجر إلكتروني متكامل 🛒", icon: "fa-shopping-basket" },
+    { name: "أ. محمود فوزي", city: "الكويت", action: "بدأ استشارة تسويقية مع خبيرنا 🧠", icon: "fa-lightbulb" },
+    { name: "براند سيلين", city: "المنصورة", action: "فعلت خدمة التصوير والمونتاج الاحترافي 🎬", icon: "fa-camera-retro" }
+  ];
+
+  function showAgencyNotification() {
+    const toast = document.getElementById('agency-notify');
+    const content = document.getElementById('agency-content');
+    const timeText = document.getElementById('agency-time');
+    const iconElem = document.getElementById('notify-icon');
+
+    // اختيار عشوائي ذكي
+    const randomEntry = agencyData[Math.floor(Math.random() * agencyData.length)];
+    const randMin = Math.floor(Math.random() * 12) + 1;
+
+    // تحديث المحتوى
+    content.innerHTML = `<strong style="color: #D4AF37;">${randomEntry.name}</strong> (${randomEntry.city}) <br> ${randomEntry.action}`;
+    timeText.innerText = `منذ ${randMin} دقيقة`;
+    
+    // تغيير الأيقونة حسب نوع النشاط
+    iconElem.className = `fas ${randomEntry.icon}`;
+
+    // أنيميشن الظهور (مع هزة خفيفة في الآخر)
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(0)';
+
+    // إخفاء الإشعار
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-180%)';
+      toast.style.opacity = '0';
+    }, 7000);
+  }
+
+  // يبدأ بعد 5 ثواني ويكرر كل 20 ثانية
+  setTimeout(showAgencyNotification, 5000);
+  setInterval(showAgencyNotification, 20000);
+</script>
 </body>
 </html>

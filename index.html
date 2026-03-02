@@ -690,6 +690,160 @@ window.addEventListener('load', function() {
   }
 });
 </script>
+ <a href="https://wa.me/201040834268" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+  <span class="tooltip-text">تحدث معنا الآن</span>
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px; /* بما أن الموقع RTL، اليمين هو الأفضل */
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 10000;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: #128c7e;
+    box-shadow: 0 15px 30px rgba(18, 140, 126, 0.6);
+  }
+
+  /* نص يظهر بجانب الزر ليجذب الانتباه */
+  .tooltip-text {
+    position: absolute;
+    right: 80px;
+    background: #111;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    border: 1px solid #D4AF37;
+  }
+
+  .whatsapp-float:hover .tooltip-text {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* أنيميشن نبض خفيف لجذب العين */
+  .whatsapp-float::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #25d366;
+    animation: pulse-whatsapp 2s infinite;
+  }
+
+  @keyframes pulse-whatsapp {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  /* استجابة للموبايل: تصغير الزر قليلاً */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      width: 55px;
+      height: 55px;
+      font-size: 30px;
+      bottom: 20px;
+      right: 20px;
+    }
+    .tooltip-text { display: none; } /* إخفاء النص في الموبايل لعدم الزحمة */
+  }
+</style>
+<div id="shipping-notify" style="position: fixed; bottom: 20px; left: 20px; background: rgba(15, 15, 15, 0.95); border: 1px solid #D4AF37; padding: 12px 18px; border-radius: 15px; color: #fff; z-index: 99999; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); backdrop-filter: blur(8px); transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform: translateX(-150%); opacity: 0; direction: rtl;">
+  
+  <div style="background: #0B6E4F; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #D4AF37;">
+    <i class="fas fa-shipping-fast" style="color: #D4AF37; font-size: 1.1rem;"></i>
+  </div>
+
+  <div style="text-align: right; min-width: 160px;">
+    <p id="ship-content" style="margin: 0; font-size: 0.9rem; line-height: 1.4; color: #fff;">
+      </p>
+    <small id="ship-time" style="color: #888; font-size: 0.75rem;">منذ قليل</small>
+  </div>
+</div>
+
+<div id="agency-notify" style="position: fixed; bottom: 25px; left: 25px; background: rgba(10, 10, 10, 0.98); border: 1.5px solid #D4AF37; padding: 15px 20px; border-radius: 12px; color: #fff; z-index: 10000; display: flex; align-items: center; gap: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); backdrop-filter: blur(10px); transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55); transform: translateX(-180%); opacity: 0; direction: rtl; min-width: 280px;">
+  
+  <div style="background: linear-gradient(135deg, #0B6E4F, #1a1a1a); width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(212, 175, 55, 0.3);">
+    <i id="notify-icon" class="fas fa-rocket" style="color: #D4AF37; font-size: 1.2rem;"></i>
+  </div>
+
+  <div style="text-align: right;">
+    <p id="agency-content" style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: #eee;">
+      </p>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
+        <small id="agency-time" style="color: #666; font-size: 0.7rem;">منذ 2 دقيقة</small>
+        <span style="font-size: 0.65rem; color: #0B6E4F; font-weight: bold; letter-spacing: 1px;">LIVE UPDATE</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // بيانات مخصصة للماركتينج والتطبيقات
+  const agencyData = [
+    { name: "شركة النور", city: "دبي", action: "تعاقدت على باقة إدارة السوشيال ميديا 📱", icon: "fa-bullhorn" },
+    { name: "عيادات د. هاني", city: "القاهرة", action: "أطلقت حملة إعلانية ممولة الآن 🚀", icon: "fa-ad" },
+    { name: "مطعم ذا جリル", city: "الرياض", action: "استلم نسخة تجريبية من تطبيق الموبايل 📲", icon: "fa-mobile-alt" },
+    { name: "مكتبة الإيمان", city: "الإسكندرية", action: "حجزت خدمة تصميم الهوية البصرية 🎨", icon: "fa-paint-brush" },
+    { name: "ستور توب شوب", city: "جدة", action: "سجل لإنشاء متجر إلكتروني متكامل 🛒", icon: "fa-shopping-basket" },
+    { name: "أ. محمود فوزي", city: "الكويت", action: "بدأ استشارة تسويقية مع خبيرنا 🧠", icon: "fa-lightbulb" },
+    { name: "براند سيلين", city: "المنصورة", action: "فعلت خدمة التصوير والمونتاج الاحترافي 🎬", icon: "fa-camera-retro" }
+  ];
+
+  function showAgencyNotification() {
+    const toast = document.getElementById('agency-notify');
+    const content = document.getElementById('agency-content');
+    const timeText = document.getElementById('agency-time');
+    const iconElem = document.getElementById('notify-icon');
+
+    // اختيار عشوائي ذكي
+    const randomEntry = agencyData[Math.floor(Math.random() * agencyData.length)];
+    const randMin = Math.floor(Math.random() * 12) + 1;
+
+    // تحديث المحتوى
+    content.innerHTML = `<strong style="color: #D4AF37;">${randomEntry.name}</strong> (${randomEntry.city}) <br> ${randomEntry.action}`;
+    timeText.innerText = `منذ ${randMin} دقيقة`;
+    
+    // تغيير الأيقونة حسب نوع النشاط
+    iconElem.className = `fas ${randomEntry.icon}`;
+
+    // أنيميشن الظهور (مع هزة خفيفة في الآخر)
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(0)';
+
+    // إخفاء الإشعار
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-180%)';
+      toast.style.opacity = '0';
+    }, 7000);
+  }
+
+  // يبدأ بعد 5 ثواني ويكرر كل 20 ثانية
+  setTimeout(showAgencyNotification, 5000);
+  setInterval(showAgencyNotification, 20000);
+</script>
 </body>
 </html>
 
