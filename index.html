@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>النجمة – حملات رمضانية ناجحة 2026</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -430,6 +432,150 @@
       }
     });
   </script>
+  <script>
+// إظهار إشعار Toastify عند تحميل الصفحة
+window.addEventListener('load', () => {
+  // لو كان الإشعار ظهر قبل كده، ما يظهرش تاني
+  if (!localStorage.getItem('updateToastShown')) {
+    Toastify({
+      text: "تم إضافة تحديثات جديدة في خدماتنا 🔥 تعرف عليها الآن!",
+      duration: 7000,
+      close: true,
+      gravity: "bottom", // bottom or top
+      position: "center",
+      backgroundColor: "linear-gradient(to right, #0B6E4F, #1e8449)",
+      className: "info",
+      stopOnFocus: true,
+      style: {
+        border: "1px solid #D4AF37",
+        boxShadow: "0 8px 25px rgba(0,0,0,0.5)",
+        fontSize: "1.1rem",
+        fontWeight: "500",
+      },
+      onClick: function(){
+        // لو عايز لما يضغط يروح مكان معين
+        window.location.href = "#services"; // أو صفحة معينة
+      }
+    }).showToast();
+
+    // حفظ إنه ظهر عشان ما يتكررش في الزيارات الجاية
+    localStorage.setItem('updateToastShown', 'true');
+  }
+});
+</script>
+<!-- الإشعار -->
+<div id="toast" class="toast">
+  <div class="toast-content">
+    <i class="fas fa-bell"></i>
+    <span>تم إضافة تحديثات جديدة في خدمات الشحن 🚚</span>
+  </div>
+</div>
+
+<style>
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: linear-gradient(90deg, #0B6E4F, #1e8449);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 1px solid #D4AF37;
+    opacity: 0;
+    transition: all 0.6s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    animation: shake 0.8s ease-in-out 0.4s;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-50%) translateY(0) rotate(2deg); }
+    20%, 40%, 60%, 80% { transform: translateX(-50%) translateY(0) rotate(-2deg); }
+  }
+</style>
+
+<script>
+  window.addEventListener('load', () => {
+    const toast = document.getElementById('toast');
+    if (toast && !localStorage.getItem('toastShown')) {
+      setTimeout(() => {
+        toast.classList.add('show');
+        localStorage.setItem('toastShown', 'true');
+      }, 1500);
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 7000);
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<div id="progress-toast" class="toast progress-toast">
+  <div class="toast-content">
+    <i class="fas fa-rocket"></i>
+    <span>تحديثات جديدة وصلت! جربها الآن</span>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+
+<style>
+  .progress-toast {
+    bottom: 40px;
+    background: #0B6E4F;
+    border: 2px solid #D4AF37;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background: #D4AF37;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: progress 6s linear forwards;
+  }
+
+  @keyframes progress {
+    to { transform: scaleX(1); }
+  }
+</style>
+
+<script>
+  window.addEventListener('load', () => {
+    if (!localStorage.getItem('progressToastShown')) {
+      const toast = document.getElementById('progress-toast');
+      setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(-50%) translateY(0)';
+
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.9 },
+          colors: ['#D4AF37', '#0B6E4F', '#fff']
+        });
+
+        localStorage.setItem('progressToastShown', 'true');
+      }, 2000);
+    }
+  });
+</script>
 </body>
 </html>
 
