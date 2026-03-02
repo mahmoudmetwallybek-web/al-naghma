@@ -323,37 +323,34 @@
   </div>
 </section>
 
-<script>
-  document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // منع إعادة تحميل الصفحة
+  <!-- الفوتر أو أي حاجة قبل السكريبت -->
 
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const message = document.getElementById('message').value.trim();
+  <!-- هنا السكريبت بتاع الواتساب -->
+  <script>
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      const whatsappNumber = "201040834268";  // ← رقمك هنا
+      
+      const text = `اهلا يا مستر محتاج استفسر عن تفاصيل%0A%0Aالاسم: ${name}%0Aالتليفون: ${phone}%0Aالتفاصيل:%0A${message}`;
+      
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      
+      window.open(whatsappUrl, '_blank');
+      // انتظر شوية (عشان الواتساب يفتح الأول) وبعدين روح لصفحة الشكر
+  setTimeout(() => {
+    window.location.href = "thanks.html";
+  }, 1000);  // 1 ثانية تأخير – ممكن تزودها لو عايز
+});
+  
+  </script>
 
-    // رقمك الحقيقي هنا (غيّر ده)
-    const whatsappNumber = "201040834268";  // ← حط رقمك مع 20 في البداية
-
-    const text = `اهلا يا مستر محتاج استفسر عن تفاصيل%0A%0Aالاسم: ${name}%0Aالتليفون: ${phone}%0Aالتفاصيل:%0A${message}`;
-
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-
-    // افتح الواتساب
-    window.open(whatsappUrl, '_blank');
-
-    // أظهر رسالة نجاح تحت الزرار
-    const msg = document.getElementById('success-msg');
-    msg.style.display = 'block';
-
-    // إخفاء الرسالة بعد 6 ثواني
-    setTimeout(() => {
-      msg.style.display = 'none';
-    }, 6000);
-
-    // إعادة تعيين الفورم
-    this.reset();
-  });
-</script>
+</body>
+</html>
   <footer>
     <div class="container">
       <p>© 2026 النجمة – رمضان كريم وكل عام وأنتم بخير 🌙</p>
@@ -432,6 +429,7 @@
   </script>
 </body>
 </html>
+
 
 
 
