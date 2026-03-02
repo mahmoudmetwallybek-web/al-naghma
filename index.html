@@ -546,6 +546,150 @@
     }
   });
 </script>
+--------
+<!-- الإشعار -->
+<div id="toast" class="toast">
+  <div class="toast-content">
+    <i class="fas fa-bell"></i>
+    <span>ضفنا تحديثات روشة !!</span>
+  </div>
+</div>
+
+<style>
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: linear-gradient(90deg, #0B6E4F, #1e8449);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 1px solid #D4AF37;
+    opacity: 0;
+    transition: all 0.6s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    animation: shake 0.8s ease-in-out 0.4s;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-50%) translateY(0) rotate(2deg); }
+    20%, 40%, 60%, 80% { transform: translateX(-50%) translateY(0) rotate(-2deg); }
+  }
+</style>
+
+<script>
+  window.addEventListener('load', () => {
+    const toast = document.getElementById('toast');
+    if (toast && !localStorage.getItem('toastShown')) {
+      setTimeout(() => {
+        toast.classList.add('show');
+        localStorage.setItem('toastShown', 'true');
+      }, 1500);
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 7000);
+    }
+  });
+</script>
+-----------------
+<!-- الإشعار نفسه -->
+<div id="updateToast" class="toast-update">
+  <div class="toast-body">
+    <i class="fas fa-bell"></i>
+    <span>تم إضافة تحديثات جديدة في خدماتنا 🔥</span>
+    <button class="close-toast">×</button>
+  </div>
+</div>
+
+<style>
+  .toast-update {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: #0B6E4F;
+    color: white;
+    padding: 16px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.6);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    border: 2px solid #D4AF37;
+    min-width: 340px;
+    max-width: 90%;
+    text-align: center;
+    border-radius: 16px;
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .toast-update.show {
+    display: flex;
+    transform: translateX(-50%) translateY(0);
+    animation: shakeIn 0.8s ease-out;
+  }
+
+  @keyframes shakeIn {
+    0%   { transform: translateX(-50%) translateY(0) rotate(0deg); opacity:0; }
+    20%  { transform: translateX(-50%) translateY(-10px) rotate(2deg); }
+    40%  { transform: translateX(-50%) translateY(5px) rotate(-2deg); }
+    60%  { transform: translateX(-50%) translateY(-5px) rotate(1deg); }
+    80%  { transform: translateX(-50%) translateY(2px) rotate(-1deg); }
+    100% { transform: translateX(-50%) translateY(0) rotate(0deg); opacity:1; }
+  }
+
+  .close-toast {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: auto;
+    opacity: 0.8;
+  }
+  .close-toast:hover { opacity: 1; transform: scale(1.2); }
+</style>
+
+<script>
+// الكود ده هيخلي الإشعار يظهر كل مرة يدخل فيها حد (بدون localStorage)
+window.addEventListener('load', function() {
+  const toast = document.getElementById('updateToast');
+  
+  if (toast) {
+    // انتظر ثانيتين عشان الصفحة تتحمل كويس
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 2000);
+
+    // زرار الإغلاق
+    toast.querySelector('.close-toast').addEventListener('click', () => {
+      toast.classList.remove('show');
+    });
+
+    // يختفي لوحده بعد 8 ثواني
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 8000);
+  }
+});
+</script>
 </body>
 </html>
 
