@@ -6,65 +6,110 @@
   <title>تطوير التطبيقات | النجمة</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    /* نفس الستايل الرئيسي + تعديلات بسيطة */
     * { margin:0; padding:0; box-sizing:border-box; }
     body { 
       font-family: 'Tajawal', sans-serif; 
-      background:#0a0f0d; 
+      background: linear-gradient(135deg, #0a0f1a 0%, #0d1b2a 100%);
       color:#e8f5e9; 
       line-height:1.7; 
+      position:relative;
+      overflow-x:hidden;
     }
-    .container { max-width:1280px; margin:0 auto; padding:0 15px; }
-    
+
+    .container { max-width:1280px; margin:0 auto; padding:0 15px; position:relative; z-index:2; }
+
     header {
       background:linear-gradient(to bottom, #0B6E4F, #000);
       padding:1rem 0;
       position:sticky;
       top:0;
       z-index:1000;
+      border-bottom:1px solid rgba(212,175,55,0.15);
     }
     nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
     .logo { font-size:1.8rem; font-weight:bold; color:#D4AF37; }
-    .nav-links { display:flex; gap:1.5rem; }
-    .nav-links a { color:#fff; text-decoration:none; font-weight:500; }
+    .nav-links { display:flex; gap:1.8rem; }
+    .nav-links a { color:#d0e8d5; text-decoration:none; font-weight:500; transition:0.3s; }
     .nav-links a:hover { color:#D4AF37; }
     .hamburger { display:none; font-size:1.8rem; color:#D4AF37; cursor:pointer; }
 
-    /* Hero خاص بالصفحة */
+    /* Hero مع أنيميشن الكودز */
     .hero {
-      min-height:60vh;
+      position:relative;
+      min-height:70vh;
       display:flex;
       align-items:center;
       text-align:center;
-      background:linear-gradient(rgba(11,77,46,0.75), rgba(0,0,0,0.8)),
-                 url('https://images.unsplash.com/photo-1555066931-bf19c65c0b26?w=1920') center/cover;
+      background:linear-gradient(rgba(10,31,58,0.85), rgba(0,0,0,0.92));
+      overflow:hidden;
     }
-    .hero h1 { font-size:clamp(2.5rem, 8vw, 4rem); color:#D4AF37; margin-bottom:1rem; text-shadow:0 0 15px rgba(212,175,55,0.7); }
-    .hero p { font-size:clamp(1.1rem, 4vw, 1.5rem); max-width:800px; margin:0 auto 2rem; }
 
-    section { padding:5rem 0; }
-    h2 { text-align:center; font-size:2.8rem; margin-bottom:2.5rem; color:#D4AF37; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:2rem; }
+    /* أنيميشن الكودز المتحركة في الخلفية */
+    .code-rain {
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+      font-family:'Courier New', monospace;
+      color:rgba(59,130,246,0.09); /* لون أزرق خفيف جدًا */
+      font-size:1.1rem;
+      line-height:1.5;
+      white-space:pre;
+      user-select:none;
+    }
+    .code-column {
+      position:absolute;
+      top:-100%;
+      animation: fall linear infinite;
+      white-space:pre;
+    }
+    @keyframes fall {
+      0% { transform:translateY(-100%); }
+      100% { transform:translateY(200vh); }
+    }
+
+    .hero-content { position:relative; z-index:3; padding:20px; }
+    .hero h1 { font-size:clamp(2.8rem, 8vw, 5rem); color:#D4AF37; margin-bottom:1.5rem; text-shadow:0 0 20px rgba(212,175,55,0.7); }
+    .hero p { font-size:clamp(1.2rem, 4vw, 1.6rem); max-width:900px; margin:0 auto 2.5rem; }
+
+    section { padding:6rem 0; position:relative; z-index:2; }
+    h2 { text-align:center; font-size:clamp(2.5rem, 7vw, 4rem); margin-bottom:3.5rem; color:#D4AF37; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px,1fr)); gap:2.5rem; }
     .card {
       background:#111;
-      padding:2rem;
+      padding:2.5rem;
       border-radius:16px;
       border:1px solid #0B6E4F;
       transition:0.4s;
+      text-align:center;
     }
-    .card:hover { transform:translateY(-10px); border-color:#D4AF37; box-shadow:0 15px 35px rgba(11,77,46,0.3); }
-    .card i { font-size:3.5rem; color:#D4AF37; margin-bottom:1rem; }
+    .card:hover {
+      transform:translateY(-12px);
+      border-color:#D4AF37;
+      box-shadow:0 20px 40px rgba(11,77,46,0.4);
+    }
+    .card i { font-size:4.5rem; color:#D4AF37; margin-bottom:1.5rem; transition:0.4s; }
+    .card:hover i { transform:scale(1.15); }
+
+    .feature-icon {
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 1s ease-out;
+    }
+    .feature-icon.visible { opacity:1; transform:translateY(0); }
 
     footer {
       background:#000;
       text-align:center;
-      padding:3rem 0;
+      padding:4rem 0 2rem;
       border-top:1px solid #0B6E4F;
     }
-    .social a { color:#D4AF37; font-size:1.9rem; margin:0 1.2rem; transition:0.3s; }
+    .social a { color:#D4AF37; font-size:2.2rem; margin:0 1.5rem; transition:0.3s; }
     .social a:hover { transform:scale(1.2); }
 
-    @media (max-width: 768px) {
+    @media (max-width:768px) {
       .nav-links { display:none; }
       .hamburger { display:block; }
       .nav-links.active {
@@ -92,7 +137,8 @@
         <div class="nav-links" id="navLinks">
           <a href="index.html">الرئيسية</a>
           <a href="apps.html">تطوير التطبيقات</a>
-          <a href="index.html#services">خدماتنا</a>
+          <a href="digital-marketing.html">ديجيتال ماركتينج</a>
+          <a href="shipping.html">خدمات الشحن</a>
           <a href="index.html#campaigns">حملات رمضانية</a>
           <a href="index.html#why">لماذا نحن</a>
           <a href="index.html#contact">تواصل</a>
@@ -102,9 +148,15 @@
   </header>
 
   <section class="hero">
+    <!-- أنيميشن الكودز في الخلفية -->
+    <div class="code-rain" id="codeRain"></div>
+
     <div class="hero-content">
       <h1>تطوير تطبيقات احترافية</h1>
-      <p>نبني تطبيقات موبايل وويب سريعة، آمنة، ومخصصة 100% لعملك – Android • iOS • Flutter • React Native</p>
+      <p>نبني تطبيقات موبايل وويب سريعة، آمنة، ومخصصة 100% لعملك – Android • iOS • Flutter • React Native • PWA</p>
+      <a href="index.html#contact" class="btn" style="background:#D4AF37; color:#000; padding:1.1rem 3rem; font-size:1.3rem; margin-top:2rem;">
+        ابدأ مشروعك الآن →
+      </a>
     </div>
   </section>
 
@@ -113,66 +165,62 @@
       <h2>لماذا تختار النجمة لتطوير تطبيقك؟</h2>
       <div class="grid">
         <div class="card">
-          <i class="fas fa-rocket"></i>
-          <h3>سرعة وأداء عالي</h3>
-          <p>تطبيقات سريعة التحميل وتعمل بكفاءة حتى على أجهزة ضعيفة.</p>
+          <i class="fas fa-rocket feature-icon"></i>
+          <h3>أداء عالي وسرعة فائقة</h3>
+          <p>تطبيقات محسنة للأجهزة الحديثة والقديمة – وقت استجابة تحت 16ms.</p>
         </div>
         <div class="card">
-          <i class="fas fa-shield-alt"></i>
-          <h3>أمان وخصوصية</h3>
-          <p>حماية بيانات المستخدمين بأعلى المعايير + تشفير كامل.</p>
+          <i class="fas fa-shield-alt feature-icon"></i>
+          <h3>أمان على مستوى البنوك</h3>
+          <p>تشفير AES-256 + حماية من الهجمات + شهادات SSL + GDPR متوافق.</p>
         </div>
         <div class="card">
-          <i class="fas fa-mobile-alt"></i>
-          <h3>دعم Android و iOS</h3>
-          <p>تطبيق واحد يشتغل على الاثنين (أو تطبيقات منفصلة حسب احتياجك).</p>
+          <i class="fas fa-mobile-alt feature-icon"></i>
+          <h3>Cross-Platform حقيقي</h3>
+          <p>كود واحد يعمل على Android و iOS و Web – توفير وقت وتكلفة.</p>
         </div>
         <div class="card">
-          <i class="fas fa-sync-alt"></i>
-          <h3>تحديثات وصيانة</h3>
-          <p>دعم فني مستمر + تحديثات مجانية لأول 3 شهور.</p>
+          <i class="fas fa-sync-alt feature-icon"></i>
+          <h3>دعم وتحديثات مستمرة</h3>
+          <p>صيانة مجانية 6 شهور + تحديثات أمنية + دعم فني 24/7.</p>
         </div>
         <div class="card">
-          <i class="fas fa-chart-line"></i>
-          <h3>تصميم حديث وجذاب</h3>
-          <p>UI/UX احترافي يزيد من رضا العملاء ومعدلات الاحتفاظ.</p>
+          <i class="fas fa-paint-brush feature-icon"></i>
+          <h3>تصميم UI/UX حديث</h3>
+          <p>تصميم يحقق معدلات تحويل عالية + A/B testing + dark/light mode.</p>
         </div>
         <div class="card">
-          <i class="fas fa-hand-holding-usd"></i>
-          <h3>أسعار تنافسية</h3>
-          <p>باقات مرنة تناسب المشاريع الصغيرة والكبيرة.</p>
+          <i class="fas fa-hand-holding-usd feature-icon"></i>
+          <h3>تكلفة شفافة ومناسبة</h3>
+          <p>باقات مرنة تناسب الشركات الناشئة والمؤسسات الكبيرة – بدون مفاجآت.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section style="background:#111; padding:5rem 0;">
+  <section style="background:#111; padding:6rem 0;">
     <div class="container">
-      <h2>مراحل تطوير التطبيق مع النجمة</h2>
+      <h2>التقنيات اللي بنعتمد عليها</h2>
       <div class="grid">
         <div class="card">
-          <h3>1. التحليل والتخطيط</h3>
-          <p>نفهم فكرتك واحتياجاتك ونرسم خطة كاملة.</p>
+          <i class="fab fa-flutter feature-icon"></i>
+          <h3>Flutter</h3>
+          <p>تجربة واحدة لكل المنصات – أداء قريب جدًا من الناتيف.</p>
         </div>
         <div class="card">
-          <h3>2. التصميم</h3>
-          <p>نصمم واجهات جذابة وسهلة الاستخدام (UI/UX).</p>
+          <i class="fab fa-react feature-icon"></i>
+          <h3>React Native</h3>
+          <p>مكتبات ضخمة + سرعة تطوير + دعم مجتمعي قوي.</p>
         </div>
         <div class="card">
-          <h3>3. التطوير</h3>
-          <p>نكتب الكود بأحدث التقنيات (Flutter, React Native, Kotlin, Swift... إلخ).</p>
+          <i class="fas fa-code feature-icon"></i>
+          <h3>Kotlin / Swift</h3>
+          <p>تطبيقات ناتيف كاملة لأداء أقصى ومميزات خاصة بالمنصة.</p>
         </div>
         <div class="card">
-          <h3>4. الاختبار</h3>
-          <p>اختبار شامل على كل الأجهزة والإصدارات.</p>
-        </div>
-        <div class="card">
-          <h3>5. النشر</h3>
-          <p>رفع التطبيق على Google Play و App Store.</p>
-        </div>
-        <div class="card">
-          <h3>6. الدعم والتطوير</h3>
-          <p>متابعة بعد النشر + تحديثات مستمرة.</p>
+          <i class="fas fa-globe feature-icon"></i>
+          <h3>Progressive Web Apps</h3>
+          <p>تطبيق ويب يعمل أوفلاين + يُثبت على الجهاز + سرعة تحميل فائقة.</p>
         </div>
       </div>
     </div>
@@ -181,7 +229,7 @@
   <section id="contact" style="background:#0B6E4F1a;">
     <div class="container">
       <h2>جاهز تبدأ مشروع تطبيقك؟</h2>
-      <p style="text-align:center; margin-bottom:3rem;">اتصل بنا أو اكتب لنا وهنرد فورًا</p>
+      <p style="text-align:center; margin-bottom:3rem;">اتصل بنا أو اكتب لنا وهنبدأ فورًا</p>
       <div style="text-align:center;">
         <a href="index.html#contact" class="btn" style="font-size:1.3rem; padding:1.2rem 3rem;">
           <i class="fas fa-arrow-left"></i> رجوع لصفحة التواصل
@@ -202,7 +250,6 @@
     </div>
   </footer>
 
-  <!-- Hamburger Menu Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const hamburger = document.getElementById('hamburger');
@@ -211,6 +258,39 @@
         hamburger.addEventListener('click', () => {
           navLinks.classList.toggle('active');
         });
+      }
+
+      // Fade-in للأيقونات
+      const icons = document.querySelectorAll('.feature-icon');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      icons.forEach(icon => observer.observe(icon));
+
+      // أنيميشن الكودز المتحركة في الخلفية (أزرق خفيف)
+      const codeRain = document.getElementById('codeRain');
+      if (codeRain) {
+        const chars = '01{}[]()+-*/=><&|^%!@#$%^&*()_+-=[]{}|;:,.<>?/\\';
+        const columns = Math.floor(window.innerWidth / 18);
+        for (let i = 0; i < columns; i++) {
+          const column = document.createElement('div');
+          column.classList.add('code-column');
+          column.style.left = (i * 18) + 'px';
+          column.style.animationDuration = (Math.random() * 35 + 25) + 's'; // سرعة مختلفة
+          column.style.animationDelay = Math.random() * 12 + 's';
+
+          let text = '';
+          for (let j = 0; j < 140; j++) {
+            text += chars[Math.floor(Math.random() * chars.length)] + '\n';
+          }
+          column.textContent = text;
+          codeRain.appendChild(column);
+        }
       }
     });
   </script>
