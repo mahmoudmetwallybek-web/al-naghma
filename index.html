@@ -290,22 +290,67 @@
     </div>
   </section>
 
-  <section class="contact" id="contact">
-    <div class="container">
-      <h2>تواصل معانا</h2>
-      <form id="contactForm">
-        <input type="text" placeholder="الاسم" required/>
-        <input type="email" placeholder="الإيميل" required/>
-        <input type="tel" placeholder="رقم الواتساب" required/>
-        <textarea rows="6" placeholder="وصف الخدمة أو الحملة اللي عايزها..." required></textarea>
-        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> إرسال الرسالة</button>
-        <div id="success-msg" style="display:none; text-align:center; color:var(--gold); margin-top:1rem;">
-          تم إرسال الرسالة بنجاح! هنتواصل معاك قريب 🌙
-        </div>
-      </form>
-    </div>
-  </section>
+ <section class="contact" id="contact">
+  <div class="container">
+    <h2>تواصل معانا</h2>
+    <p style="text-align:center; font-size:1.2rem; margin-bottom:2.5rem; color:#c8e6c9;">
+      اكتب رسالتك وهنرد عليك في أقرب وقت ممكن 🌙
+    </p>
 
+    <!-- الفورم الجديد من Formspree -->
+    <form 
+      action="https://formspree.io/f/xnjbyyzj" 
+      method="POST"
+      style="max-width:600px; margin:0 auto; display:grid; gap:1.5rem;"
+    >
+      <input 
+        type="text" 
+        name="الاسم" 
+        placeholder="الاسم الكامل" 
+        required 
+        style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"
+      />
+
+      <input 
+        type="email" 
+        name="الإيميل" 
+        placeholder="الإيميل" 
+        required 
+        style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"
+      />
+
+      <input 
+        type="tel" 
+        name="رقم التليفون" 
+        placeholder="رقم الواتساب أو التليفون" 
+        required 
+        style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"
+      />
+
+      <textarea 
+        name="الرسالة" 
+        rows="6" 
+        placeholder="وصف الخدمة أو الحملة اللي عايزها..." 
+        required 
+        style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"
+      ></textarea>
+
+      <!-- حقل مخفي عشان يوصلك عنوان الرسالة مرتب -->
+      <input type="hidden" name="_subject" value="رسالة جديدة من موقع النجمة" />
+
+      <!-- صفحة شكر بعد الإرسال (اختياري – لو عملت صفحة thanks.html) -->
+      <!-- <input type="hidden" name="_next" value="https://اسمك.github.io/اسم-الريبو/thanks.html" /> -->
+
+      <button 
+        type="submit" 
+        class="btn"
+        style="background:#D4AF37; color:#000; padding:1.2rem 3rem; font-size:1.2rem;"
+      >
+        <i class="fas fa-paper-plane"></i> إرسال الرسالة
+      </button>
+    </form>
+  </div>
+</section>
   <footer>
     <div class="container">
       <p>© 2026 النجمة – رمضان كريم وكل عام وأنتم بخير 🌙</p>
@@ -384,3 +429,4 @@
   </script>
 </body>
 </html>
+
