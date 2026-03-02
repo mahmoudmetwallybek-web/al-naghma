@@ -290,67 +290,61 @@
     </div>
   </section>
 
- <section class="contact" id="contact">
+<section class="contact" id="contact">
   <div class="container">
     <h2>تواصل معانا</h2>
-    <p style="text-align:center; font-size:1.2rem; margin-bottom:2.5rem; color:#c8e6c9;">
-      اكتب رسالتك وهنرد عليك في أقرب وقت ممكن 🌙
+    <p style="text-align:center; font-size:1.3rem; margin-bottom:2.5rem; color:#c8e6c9;">
+      اكتب رسالتك وهنرد عليك في أقرب وقت – على الإيميل أو الواتساب مباشرة 📧📱
     </p>
 
-    <!-- الفورم الجديد من Formspree -->
+    <!-- الفورم اللي هيبعت للإيميل + يفتح الواتساب -->
     <form 
-      action="https://formspree.io/f/xnjbyyzj" 
+      id="contactForm"
+      action="https://formspree.io/f/xnjbyyzj"  <!-- ← غير ده بالكود الحقيقي بتاعك من Formspree -->
       method="POST"
       style="max-width:600px; margin:0 auto; display:grid; gap:1.5rem;"
     >
-      <input 
-        type="text" 
-        name="الاسم" 
-        placeholder="الاسم الكامل" 
-        required 
-        style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"
-      />
+      <input type="text" name="الاسم" placeholder="الاسم الكامل" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
+      
+      <input type="email" name="الإيميل" placeholder="الإيميل" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
+      
+      <input type="tel" name="رقم التليفون" placeholder="رقم الواتساب أو التليفون" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
+      
+      <textarea name="الرسالة" rows="6" placeholder="وصف الخدمة أو الحملة اللي عايزها..." required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"></textarea>
 
-      <input 
-        type="email" 
-        name="الإيميل" 
-        placeholder="الإيميل" 
-        required 
-        style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"
-      />
+      <!-- حقول مخفية للإيميل -->
+      <input type="hidden" name="_subject" value="رسالة جديدة من موقع النجمة"/>
+      <!-- صفحة شكر (غير الرابط ده بعد ما تعمل thanks.html) -->
+      <input type="hidden" name="_next" value="https://اسمك.github.io/اسم-الريبو/thanks.html"/>
 
-      <input 
-        type="tel" 
-        name="رقم التليفون" 
-        placeholder="رقم الواتساب أو التليفون" 
-        required 
-        style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"
-      />
-
-      <textarea 
-        name="الرسالة" 
-        rows="6" 
-        placeholder="وصف الخدمة أو الحملة اللي عايزها..." 
-        required 
-        style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"
-      ></textarea>
-
-      <!-- حقل مخفي عشان يوصلك عنوان الرسالة مرتب -->
-      <input type="hidden" name="_subject" value="رسالة جديدة من موقع النجمة" />
-
-      <!-- صفحة شكر بعد الإرسال (اختياري – لو عملت صفحة thanks.html) -->
-      <!-- <input type="hidden" name="_next" value="https://اسمك.github.io/اسم-الريبو/thanks.html" /> -->
-
-      <button 
-        type="submit" 
-        class="btn"
-        style="background:#D4AF37; color:#000; padding:1.2rem 3rem; font-size:1.2rem;"
-      >
+      <button type="submit" class="btn">
         <i class="fas fa-paper-plane"></i> إرسال الرسالة
       </button>
     </form>
   </div>
 </section>
+
+<!-- السكريبت اللي هيفتح الواتساب بعد الإرسال -->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // ما نمنعش الإرسال للإيميل، خلي الفورم يبعت عادي
+    // لكن في نفس الوقت نفتح الواتساب
+
+    const name = document.querySelector('input[name="الاسم"]').value;
+    const phone = document.querySelector('input[name="رقم التليفون"]').value;
+    const message = document.querySelector('textarea[name="الرسالة"]').value;
+
+    // رقم الواتساب بتاعك (غير الرقم ده برقمك الحقيقي مع كود مصر 20)
+    const whatsappNumber = "201040834268";  // ← حط رقمك هنا
+
+    const text = `رسالة جديدة من موقع النجمة 🌟%0A%0Aالاسم: ${name}%0Aالتليفون: ${phone}%0Aالرسالة:%0A${message}`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+    // افتح الواتساب في تبويب جديد
+    window.open(whatsappUrl, '_blank');
+  });
+</script>
   <footer>
     <div class="container">
       <p>© 2026 النجمة – رمضان كريم وكل عام وأنتم بخير 🌙</p>
@@ -429,4 +423,5 @@
   </script>
 </body>
 </html>
+
 
