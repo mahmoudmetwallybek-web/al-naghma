@@ -297,7 +297,6 @@
       </div>
     </div>
   </section>
-
 <section class="contact" id="contact">
   <div class="container">
     <h2>تواصل معانا</h2>
@@ -310,48 +309,49 @@
       
       <input type="tel" id="phone" placeholder="رقم التليفون" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
       
-      <textarea id="message" rows="6" placeholder="وصف الاستفسار أو الخدمة اللي محتاجها..." required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"></textarea>
-      <form id="whatsappForm" style="max-width:600px; margin:0 auto; display:grid; gap:1.5rem;">
-  <input type="text" id="name" placeholder="الاسم الكامل" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
-  
-  <input type="tel" id="phone" placeholder="رقم التليفون" required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"/>
-  
-  <textarea id="message" rows="6" placeholder="وصف الخدمة أو الحملة اللي عايزها..." required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"></textarea>
-
-  <!-- ← ربط صفحة الشكر هنا -->
- <input type="hidden" name="_next" value="https://mahmoudmetwallybek-web.github.io/al-naghma/thanks.html" />
-  <button type="submit" class="btn">
-    <i class="fab fa-whatsapp"></i> إرسال على الواتساب
-  </button>
-</form>
-      <button type="submit" class="btn">
+      <textarea id="message" rows="6" placeholder="وصف الخدمة أو الحملة اللي عايزها..." required style="padding:1rem; border-radius:10px; border:1px solid #444; background:#222; color:#fff; font-size:1.05rem;"></textarea>
+      
+      <button type="submit" class="btn" id="submitBtn">
         <i class="fab fa-whatsapp"></i> إرسال على الواتساب
       </button>
+
+      <!-- رسالة النجاح اللي هتظهر تحت الزرار -->
+      <div id="success-msg" style="display:none; text-align:center; color:#D4AF37; font-size:1.3rem; margin-top:1rem;">
+        تم فتح الواتساب بنجاح! اكمل واضغط إرسال 📱
+      </div>
     </form>
   </div>
 </section>
 
 <script>
   document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
+    e.preventDefault(); // منع إعادة تحميل الصفحة
+
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
-    
-    // رقم الواتساب بتاعك (غيّر الرقم ده برقمك الحقيقي مع كود الدولة)
-    const whatsappNumber = "201040834268";  // ← حط رقمك هنا مثال: 2010123456789
-    
-    // النص الجديد اللي طلبت
+
+    // رقمك الحقيقي هنا (غيّر ده)
+    const whatsappNumber = "201040834268";  // ← حط رقمك مع 20 في البداية
+
     const text = `اهلا يا مستر محتاج استفسر عن تفاصيل%0A%0Aالاسم: ${name}%0Aالتليفون: ${phone}%0Aالتفاصيل:%0A${message}`;
-    
+
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-    
+
     // افتح الواتساب
     window.open(whatsappUrl, '_blank');
-    
-    // رسالة نجاح سريعة (اختياري)
-    alert("تم فتح الواتساب بنجاح! اكمل واضغط إرسال 📱");
+
+    // أظهر رسالة نجاح تحت الزرار
+    const msg = document.getElementById('success-msg');
+    msg.style.display = 'block';
+
+    // إخفاء الرسالة بعد 6 ثواني
+    setTimeout(() => {
+      msg.style.display = 'none';
+    }, 6000);
+
+    // إعادة تعيين الفورم
+    this.reset();
   });
 </script>
   <footer>
@@ -432,6 +432,7 @@
   </script>
 </body>
 </html>
+
 
 
 
