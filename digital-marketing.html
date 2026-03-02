@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ديجيتال ماركتينج | النجمة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { 
+      font-family: 'Tajawal', sans-serif; 
+      background:#0a0f0d; 
+      color:#e8f5e9; 
+      line-height:1.7; 
+    }
+    .container { max-width:1280px; margin:0 auto; padding:0 15px; }
+
+    header {
+      background:linear-gradient(to bottom, #0B6E4F, #000);
+      padding:1rem 0;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+    nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .logo { font-size:1.8rem; font-weight:bold; color:#D4AF37; }
+    .nav-links { display:flex; gap:1.5rem; }
+    .nav-links a { color:#fff; text-decoration:none; font-weight:500; }
+    .nav-links a:hover { color:#D4AF37; }
+    .hamburger { display:none; font-size:1.8rem; color:#D4AF37; cursor:pointer; }
+
+    .hero {
+      min-height:60vh;
+      display:flex;
+      align-items:center;
+      text-align:center;
+      background:linear-gradient(rgba(11,77,46,0.75), rgba(0,0,0,0.8)),
+                 url('https://images.unsplash.com/photo-1556155099-490a1ba16284?w=1920') center/cover;
+    }
+    .hero h1 { font-size:clamp(2.5rem, 8vw, 4rem); color:#D4AF37; margin-bottom:1rem; text-shadow:0 0 15px rgba(212,175,55,0.7); }
+    .hero p { font-size:clamp(1.1rem, 4vw, 1.5rem); max-width:800px; margin:0 auto 2rem; }
+
+    section { padding:5rem 0; }
+    h2 { text-align:center; font-size:2.8rem; margin-bottom:2.5rem; color:#D4AF37; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:2rem; }
+    .card {
+      background:#111;
+      padding:2rem;
+      border-radius:16px;
+      border:1px solid #0B6E4F;
+      transition:0.4s;
+    }
+    .card:hover { transform:translateY(-10px); border-color:#D4AF37; box-shadow:0 15px 35px rgba(11,77,46,0.3); }
+    .card i { font-size:3.5rem; color:#D4AF37; margin-bottom:1rem; }
+
+    footer {
+      background:#000;
+      text-align:center;
+      padding:3rem 0;
+      border-top:1px solid #0B6E4F;
+    }
+    .social a { color:#D4AF37; font-size:1.9rem; margin:0 1.2rem; transition:0.3s; }
+    .social a:hover { transform:scale(1.2); }
+
+    @media (max-width: 768px) {
+      .nav-links { display:none; }
+      .hamburger { display:block; }
+      .nav-links.active {
+        display:flex;
+        flex-direction:column;
+        position:absolute;
+        top:100%;
+        right:0;
+        background:#0B6E4F;
+        width:100%;
+        padding:1.5rem 0;
+        text-align:center;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">الـ<span>نجمة</span> 🌙</div>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">الرئيسية</a>
+          <a href="apps.html">تطوير التطبيقات</a>
+          <a href="digital-marketing.html">ديجيتال ماركتينج</a>
+          <a href="index.html#services">خدماتنا</a>
+          <a href="index.html#campaigns">حملات رمضانية</a>
+          <a href="index.html#why">لماذا نحن</a>
+          <a href="index.html#contact">تواصل</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>ديجيتال ماركتينج احترافي</h1>
+      <p>نوصل منتجك أو خدمتك للجمهور المناسب بأعلى عائد استثماري – حملات مدفوعة، إدارة سوشيال، SEO، إعلانات تيك توك وإنستا وفيسبوك وجوجل</p>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2>خدماتنا في الديجيتال ماركتينج</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fas fa-bullhorn"></i>
+          <h3>إعلانات مدفوعة (Paid Ads)</h3>
+          <p>حملات فيسبوك، إنستغرام، تيك توك، جوجل أدز، سناب شات – ROI عالي واستهداف دقيق.</p>
+        </div>
+        <div class="card">
+          <i class="fab fa-instagram"></i>
+          <h3>إدارة السوشيال ميديا</h3>
+          <p>كونتنت يومي + ستوري + ريلز + تفاعل مع الجمهور + نمو عضوي.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-search"></i>
+          <h3>SEO وتحسين محركات البحث</h3>
+          <p>ظهور موقعك في أول نتايج جوجل + كلمات مفتاحية + تحسين السرعة والمحتوى.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>تعاون مع مؤثرين</h3>
+          <p>شراكات مع إنفلونسرز في مجالك + حملات مدروسة + نتايج مضمونة.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-robot"></i>
+          <h3>إعلانات ذكية بالذكاء الاصطناعي</h3>
+          <p>تخصيص إعلانات حسب سلوك العميل + تقليل التكلفة + زيادة التحويلات.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>تحليل وتقارير</h3>
+          <p>تقارير أسبوعية + تحليل أداء + اقتراحات تحسين مستمرة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#111; padding:5rem 0;">
+    <div class="container">
+      <h2>مراحل حملة ديجيتال ماركتينج ناجحة مع النجمة</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>1. دراسة السوق والجمهور</h3>
+          <p>نفهم عملائك المستهدفين ومنافسينك.</p>
+        </div>
+        <div class="card">
+          <h3>2. وضع الاستراتيجية</h3>
+          <p>نختار المنصات والميزانية والكونتنت المناسب.</p>
+        </div>
+        <div class="card">
+          <h3>3. الإعداد والتصميم</h3>
+          <p>إعلانات جذابة + كونتنت + لاندينج بيج (لو محتاج).</p>
+        </div>
+        <div class="card">
+          <h3>4. الإطلاق والمتابعة</h3>
+          <p>حملة مستمرة + تحسين يومي + تقارير.</p>
+        </div>
+        <div class="card">
+          <h3>5. التحليل والتوسع</h3>
+          <p>نقيس النتايج ونكبر الحملة الناجحة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="background:#0B6E4F1a;">
+    <div class="container">
+      <h2>جاهز تبدأ حملتك الإعلانية؟</h2>
+      <p style="text-align:center; margin-bottom:3rem;">اتصل بنا أو اكتب لنا وهنبدأ فورًا</p>
+      <div style="text-align:center;">
+        <a href="index.html#contact" class="btn" style="font-size:1.3rem; padding:1.2rem 3rem;">
+          <i class="fas fa-arrow-left"></i> رجوع لصفحة التواصل
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 النجمة – جميع الحقوق محفوظة</p>
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hamburger Menu Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
